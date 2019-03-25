@@ -21,20 +21,20 @@ use Symfony\Component\HttpFoundation\Response;
 class ResetPasswordController extends AbstractController
 {
     /**
-     * @Route("/resetpassword/{tokenrecup}{mail}", name="reset_password")
+     * @Route("/resetpassword/{token}{mail}", name="reset_password")
      */
 
-     public function resetPassword(Request $request, UserPasswordEncoderInterface $passwordEncoder, $tokenrecup, $mail)
+     public function resetPassword(Request $request, UserPasswordEncoderInterface $passwordEncoder, $token, $mail)
      {
 
        $entityManager = $this->getDoctrine()->getManager();
 
-       $user = $entityManager->getRepository(User::class)->findOneByResetToken($token);
+       $user = $entityManager->getRepository(User::class)->findOneByEmail($mail);
        /* @var $user User */
 
        if ($user === null) {
            $this->addFlash('danger', 'Token Inconnu');
-           return $this->redirectToRoute('homepage');
+           return $this->redirectToRoute('home');
        }
 
 

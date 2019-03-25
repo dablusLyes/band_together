@@ -52,7 +52,7 @@ class ForgetPasswordController extends AbstractController
                 return $this->redirectToRoute('home');
             }
 
-            $url = $this->generateUrl('reset_password', array('tokenrecup' => $token, 'mail' => $email), UrlGeneratorInterface::ABSOLUTE_URL);
+            $url = $this->generateUrl('reset_password', array('token' => $token, 'mail' => $email), UrlGeneratorInterface::ABSOLUTE_URL);
 
             $message = (new \Swift_Message('Forgot Password'))
                 ->setFrom('g.ponty@dev-web.io')
