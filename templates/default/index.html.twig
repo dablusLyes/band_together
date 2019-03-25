@@ -15,11 +15,12 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#news">News</a></li>
                 <li><a href="#contact">Contact</a></li>
-                {#{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}#}
-                <li><a href="{{ path('login') }}">Connexion</a></li>
-                {#{% else %}#}
-                <li><a href="{{ path('logout') }}">Déconnexion</a></li>
-                {#{% endif %}#}
+                {% if  (is_granted('ROLE_USER') == false) and (is_granted('ROLE_ADMIN') == false)  %}
+                    <li><a href="{{ path('app_login') }}">Connexion</a></li>
+                    <li><a href="{{ path('register') }}">Inscription</a></li>
+                {% else %}
+                    <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+                {% endif %}
             </ul>
         </nav>
 
