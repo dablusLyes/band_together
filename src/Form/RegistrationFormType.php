@@ -7,12 +7,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -26,7 +24,6 @@ class RegistrationFormType extends AbstractType
                   'required' => true,
                   'first_options'  => ['label' => 'Entrez votre Email'],
                   'second_options' => ['label' => 'Confirmez votre Email'],
-<<<<<<< HEAD
                   'constraints' => [
                       new NotBlank([
                           'message' => 'Please enter a password',
@@ -38,8 +35,6 @@ class RegistrationFormType extends AbstractType
                           'max' => 50,
                       ]),
                   ],
-=======
->>>>>>> 492545bb016927b8c7dd96222d8826e36a2dc563
             ])
             ->add('password', RepeatedType::class, [
                   'type' => PasswordType::class,
@@ -48,7 +43,6 @@ class RegistrationFormType extends AbstractType
                   'required' => true,
                   'first_options'  => ['label' => 'Mot de passse'],
                   'second_options' => ['label' => 'Confirmez votre mot de passe'],
-<<<<<<< HEAD
                   'constraints' => [
                       new NotBlank([
                           'message' => 'Please enter a password',
@@ -60,8 +54,6 @@ class RegistrationFormType extends AbstractType
                           'max' => 120,
                       ]),
                   ],
-=======
->>>>>>> 492545bb016927b8c7dd96222d8826e36a2dc563
             ]);
     }
 
