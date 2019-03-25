@@ -7,6 +7,7 @@
 @import url('https://fonts.googleapis.com/css?family=Bungee|Gruppo|McLaren|Roboto+Mono');
 
 html {
+    scroll-behavior: smooth;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -31,12 +32,38 @@ body {
 
 /*================= * HEADER * =====================*/
 
+header{
+    position: fixed;
+    width: 100%;
+    z-index: 666;
+}
+header nav ul{
+    display: flex;
+    height: 50px;
+    line-height: 50px;
+    justify-content: center;
+    background-color: rgba(37,37,37,.6);
+}
 
+header nav ul li a {
+    font-size: 1.2em;
+    padding: 10px;
+    color: #FCBB26;
+    text-decoration: none;
+    border: solid 1px transparent;
+}
+
+header nav ul li a:hover{
+    /*text-decoration: underline;*/
+    border: solid #FFCC46;
+    border-width: 0 1px;
+    color: white;
+}
 
 /*============= * HOME SECTION * ===============*/
 
 .px_bg1 {
-    background: url("../img/bg3.jpg") no-repeat fixed;
+    background: url("../img/homebackground.jpg") no-repeat fixed;
     background-size: cover;
     height: 100vh;
 }
@@ -45,24 +72,21 @@ section.home{
     position: relative;
 }
 section.home h1 {
-    width: 35gitb%;
-    margin: 0 auto;
-    font-size: 3.8em;
+    width: 30%;
+    font-size: 3em;
     font-family: 'Bungee';
-    background-color: rgba(37,37,37,0.2);
     padding: 25px;
     color: white;
     text-align: center;
-    position: relative;
+    position: absolute;
     top: 50%;
-    transform: translate(0,-50%);
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 section.home i{
-    cursor: pointer;
     font-size: 2em;
-    display: block;
-    color: #FFCC46;
+    color: white;
     position: absolute;
     bottom: 10px;
     left: 50%;
@@ -75,9 +99,53 @@ section.about {
     height: 100vh;
     padding: 100px;
     position: relative;
+    background-color: #AC3931;
+    color: white;
 }
 
 section.about i {
+    cursor: pointer;
+    font-size: 2em;
+    display: block;
+    color: #252525;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+/*============= * SERVICES SECTION * ===============*/
+
+section.services {
+    height: 100vh;
+    padding: 100px;
+    position: relative;
+    background-color: #252525;
+    color: #FFCC46;
+}
+
+section.services i {
+    cursor: pointer;
+    font-size: 2em;
+    display: block;
+    color: #FFCC46;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+/*============= * NEWS SECTION * ===============*/
+
+section.news {
+    height: 100vh;
+    padding: 100px;
+    position: relative;
+    background-color: #FFCC46;
+    color: #252525;
+}
+
+section.news i {
     cursor: pointer;
     font-size: 2em;
     display: block;
@@ -88,3 +156,23 @@ section.about i {
     transform: translate(-50%,-50%);
 }
 
+/*============= * CONTACT SECTION * ===============*/
+
+section.contact {
+    height: 100vh;
+    padding: 100px;
+    position: relative;
+    background-color: #666666;
+    color: white;
+}
+
+section.contact i {
+    cursor: pointer;
+    font-size: 2em;
+    display: block;
+    color: #AC3931;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
