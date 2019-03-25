@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\Response;
 class ResetPasswordController extends AbstractController
 {
     /**
-     * @Route("/resetpassword/{token}{mail}", name="reset_password")
+     * @Route("/resetpassword/{token}/{mail}", name="reset_password")
      */
 
      public function resetPassword(Request $request, UserPasswordEncoderInterface $passwordEncoder, $token, $mail)
@@ -29,23 +29,19 @@ class ResetPasswordController extends AbstractController
 
        $entityManager = $this->getDoctrine()->getManager();
 
-       $user = $entityManager->getRepository(User::class)->findOneByEmail($mail);
+       $user = $entityManager->getRepository(User::class)->findOneByToken($token);
        /* @var $user User */
 
-       if ($user === null) {
+       if ($user === null && $user->getEmail != $mail) {
            $this->addFlash('danger', 'Token Inconnu');
            return $this->redirectToRoute('home');
        }
 
-
          if ($request->isMethod('POST')) {
-
              $user->setToken($user->generateToken());
              $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('password')));
              $entityManager->flush();
-
              $this->addFlash('notice', 'Mot de passe mis à jour');
-
              return $this->redirectToRoute('home');
          }
 
