@@ -28,7 +28,7 @@ class UserFixtures extends Fixture
 
           $manager->persist($user_admin);
 
-          $names = ['michel', 'tartenpion', 'antoine', 'yoda', 'obiwan', 'frederic', 'faillot', 'macron'];
+          $names = ['michel', 'tartenpion', 'antoine', 'yoda', 'obiwan', 'frederic', 'faillot', 'macron', 'jeanphil', 'jeanfonce', 'jeancul'];
 
           for ($i=0; $i < 100; $i++) {
             $name = $names[rand(0, count($names) - 1)].$i;
