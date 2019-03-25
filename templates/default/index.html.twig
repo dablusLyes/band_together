@@ -2,25 +2,26 @@
 
 {% block body %}
 
-    {#<header>#}
+    <header>
 
-        {#<div class="logo_container"><img src="{{ asset('assets/img/logo.png') }}" alt="logo band together" class="logo"></div>#}
+        <div class="logo_container"><img src="{{ asset('assets/img/logo.png') }}" alt="logo band together" class="logo"></div>
 
-        {#<nav>#}
-            {#<ul>#}
-                {#<li><a href="">Accueil</a></li>#}
-                {#<li><a href="">A propos</a></li>#}
-                {#<li><a href="">Services</a></li>#}
-                {#<li><a href="">News</a></li>#}
-                {#<li><a href="">Contact</a></li>#}
-                {# If islogged  => #}
-                {#<li><a href="">Connexion</a></li>#}
-                {# Else => #}
-                {#<li><a href="">Déconnexion</a></li>#}
-            {#</ul>#}
-        {#</nav>#}
+        <nav>
+            <ul>
+                <li><a href="{{ path('home') }}">Accueil</a></li>
+                <li><a href="{{ path('about') }}">A propos</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="{{ path('news') }}">News</a></li>
+                <li><a href="{{ path('contact') }}">Contact</a></li>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li><a href="#">Connexion</a></li>
+                {% else %}
+                    <li><a href="#">Déconnexion</a></li>
+                {% endif %}
+            </ul>
+        </nav>
 
-    {#</header>#}
+    </header>
 
     <section class="home px_bg1">
             <h1>Band Together</h1>
