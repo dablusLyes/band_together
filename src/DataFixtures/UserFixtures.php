@@ -26,6 +26,8 @@ class UserFixtures extends Fixture
               'michel'
           ));
 
+          $user_admin->setToken($user_admin->generateToken());
+
           $manager->persist($user_admin);
 
           $names = ['michel', 'tartenpion', 'antoine', 'yoda', 'obiwan', 'frederic', 'faillot', 'macron', 'jeanphil', 'jeanfonce', 'jeancul'];
@@ -39,6 +41,9 @@ class UserFixtures extends Fixture
                   $user,
                   'michel'
               ));
+
+            $user->setToken($user->generateToken());
+
             $manager->persist($user);
           }
 
