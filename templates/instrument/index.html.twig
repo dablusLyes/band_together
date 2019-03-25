@@ -3,35 +3,47 @@
 {% block title %}Instrument index{% endblock %}
 
 {% block body %}
-    <h1>Instrument index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Categorie</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for instrument in instruments %}
-            <tr>
-                <td>{{ instrument.id }}</td>
-                <td>{{ instrument.nom }}</td>
-                <td>{{ instrument.categorie }}</td>
-                <td>
-                    <a href="{{ path('instrument_show', {'id': instrument.id}) }}">show</a>
-                    <a href="{{ path('instrument_edit', {'id': instrument.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <h1> Instruments </h1>
+
+<div id="content-wrapper">
+
+      <div class="container-fluid">
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i> Liste des instruments</div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>id</th>
+                    <th>Nom</th>
+                    <th>Categorie</th>
+                    <th>actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for instrument in instruments %}
+                    <tr>
+                        <td>{{ instrument.id }}</td>
+                        <td>{{ instrument.nom }}</td>
+                        <td>{{ instrument.categorie }}</td>
+                        <td>
+                            <a href="{{ path('instrument_show', {'id': instrument.id}) }}">show</a>
+                            <a href="{{ path('instrument_edit', {'id': instrument.id}) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
 
     <a href="{{ path('instrument_new') }}">Create new</a>
 {% endblock %}
