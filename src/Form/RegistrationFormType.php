@@ -20,7 +20,7 @@ class RegistrationFormType extends AbstractType
             ->add('email', RepeatedType::class, [
                   'type' => EmailType::class,
                   'invalid_message' => 'Les deux champs mail doivent être identique.',
-                  'options' => ['attr' => ['class' => 'password-field']],
+                  'options' => ['attr' => ['class' => 'email-field']],
                   'required' => true,
                   'first_options'  => ['label' => 'Entrez votre Email'],
                   'second_options' => ['label' => 'Confirmez votre Email'],
