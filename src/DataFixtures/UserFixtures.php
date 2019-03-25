@@ -26,9 +26,16 @@ class UserFixtures extends Fixture
               'michel'
           ));
 
+          $user_admin->setRoles(['ROLE_SUPER_ADMIN']);
+          $user_admin->setToken($user_admin->generateToken());
+
           $manager->persist($user_admin);
 
-          $names = ['michel', 'tartenpion', 'antoine', 'yoda', 'obiwan', 'frederic', 'faillot', 'macron'];
+<<<<<<< HEAD
+          $names = ['michel', 'tartenpion', 'antoine', 'yoda', 'obiwan', 'frederic', 'faillot', 'macron', 'jeanphil', 'jeanfonce', 'jeancul'];
+=======
+          $names = ['michel', 'tartenpion', 'antoine', 'yoda', 'obiwan', 'frederic', 'faillot', 'macron','jeanphil'];
+>>>>>>> 492545bb016927b8c7dd96222d8826e36a2dc563
 
           for ($i=0; $i < 100; $i++) {
             $name = $names[rand(0, count($names) - 1)].$i;
@@ -39,6 +46,9 @@ class UserFixtures extends Fixture
                   $user,
                   'michel'
               ));
+
+            $user->setToken($user->generateToken());
+
             $manager->persist($user);
           }
 
