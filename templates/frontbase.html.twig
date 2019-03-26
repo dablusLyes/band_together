@@ -2,16 +2,6 @@
 <html>
 <head>
 
-    <!-- Google Analytics -->
-    {#<script async src="https://www.googletagmanager.com/gtag/js?id=UA-136670597-1"></script>#}
-    {#<script>#}
-    {#window.dataLayer = window.dataLayer || [];#}
-    {#function gtag(){dataLayer.push(arguments);}#}
-    {#gtag('js', new Date());#}
-
-    {#gtag('config', 'UA-136670597-1');#}
-    {#</script>#}
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="reply-to" content="contact@bandtogether.fr">
@@ -32,6 +22,15 @@
 {% block javascripts %}
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <!-- Google Analytics -->
+    {#<script async src="https://www.googletagmanager.com/gtag/js?id=UA-136670597-1"></script>#}
+    {#<script>#}
+    {#window.dataLayer = window.dataLayer || [];#}
+    {#function gtag(){dataLayer.push(arguments);}#}
+    {#gtag('js', new Date());#}
+
+    {#gtag('config', 'UA-136670597-1');#}
+    {#</script>#}
 {% endblock %}
 
 </body>

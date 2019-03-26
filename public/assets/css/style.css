@@ -176,3 +176,23 @@ section.contact i {
     left: 50%;
     transform: translate(-50%,-50%);
 }
+
+/* ====================================== */
+
+.section_container{
+    display: flex;
+    flex-direction: column;
+}
+
+.section_text {
+    margin-top: 100px;
+    padding: 0 50px;
+    font-size: 1.2em;
+    text-align: justify;
+}
+
+section img{
+    width: 300px;
+    display: block;
+    margin: 0 auto 50px;
+}
