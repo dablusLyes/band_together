@@ -15,6 +15,9 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#news">News</a></li>
                 <li><a href="#contact">Contact</a></li>
+                {% if (is_granted('ROLE_ADMIN') == true) %}
+                    <li><a href="{{ path('dashboard') }}">Admin</a></li>
+                {% endif %}
                 {% if  (is_granted('ROLE_USER') == false) and (is_granted('ROLE_ADMIN') == false)  %}
                     <li><a href="{{ path('app_login') }}">Connexion</a></li>
                     <li><a href="{{ path('register') }}">Inscription</a></li>
@@ -34,148 +37,58 @@
 
     <section id="about" class="about">
         <div class="wrap">
-            <p><span class="focus">Band Together</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet atque beatae ea in ipsam iusto laborum
-                qui, quibusdam sint tenetur. Architecto aspernatur aut culpa deleniti fugiat non nostrum quae quisquam
-                quod repellendus totam unde velit, voluptatibus. Amet beatae commodi ea eaque ex harum ipsam itaque
-                labore, libero nemo nesciunt porro reprehenderit rerum suscipit tempore tenetur, totam ullam vel
-                voluptates voluptatum? Animi ducimus facere fuga ipsa iusto labore modi, nostrum obcaecati quis quod
-                recusandae repudiandae sapiente sint, veritatis, voluptate? Accusamus amet aperiam aspernatur eaque,
-                enim eos harum hic ipsa laboriosam maiores minus nihil optio perferendis, praesentium quisquam
-                temporibus ullam. Adipisci cumque dolorum ducimus ea eaque eligendi eos et ex expedita explicabo fugiat
-                illum impedit ipsam mollitia neque nisi non optio pariatur placeat quaerat qui repudiandae saepe sunt
-                tempora tempore tenetur ullam unde veniam, veritatis voluptatibus. Alias amet corporis doloribus
-                explicabo fuga laudantium modi sapiente. Blanditiis dolores explicabo labore laborum nemo, provident qui
-                quos veniam voluptate! Ad aliquam animi cumque cupiditate debitis deserunt dicta distinctio earum, harum
-                iusto laudantium, libero minus mollitia neque numquam odio porro quas quod saepe tempore totam unde vel
-                voluptatibus. Aperiam ducimus est sapiente tempora vel. Atque dolorem ipsa libero neque nostrum quisquam
-                reiciendis sapiente sit ullam voluptatem.</p>
-            <p>Amet, explicabo quis? Autem consequuntur cupiditate deserunt dignissimos dolor, est ex exercitationem in
-                magnam modi numquam officia, perspiciatis porro provident sint suscipit tempore! Aliquid amet animi
-                asperiores beatae consectetur consequatur consequuntur culpa cupiditate doloribus eligendi enim esse
-                exercitationem explicabo fugiat fugit illum iusto maiores maxime minus nemo non, sed tempora voluptas!
-                Atque beatae dolor eos excepturi iure, obcaecati perferendis rerum suscipit vel vitae! Accusantium
-                asperiores assumenda, cum debitis dolores, dolorum fuga id minus non obcaecati quas quis sapiente,
-                tenetur! Animi consequatur nulla possimus unde velit voluptatem, voluptates? Accusantium aspernatur
-                culpa deleniti dignissimos dolorem doloremque earum et, incidunt ipsam iure modi molestiae molestias
-                nobis numquam officia optio perspiciatis possimus recusandae velit voluptatem? Ab animi at consequuntur
-                cumque dolores eius eum ex excepturi expedita in incidunt, iste laborum molestiae nulla pariatur quae
-                qui, quia repellat sed sequi similique sint tempore. Aspernatur corporis enim illum placeat quam
-                suscipit ullam velit! Aliquam aspernatur assumenda aut consequatur dignissimos doloremque eaque
-                eligendi, eum facere iste iusto nemo nesciunt, nulla numquam obcaecati praesentium quae quos ut vero,
-                voluptate. Asperiores, autem, corporis cumque dignissimos ea eaque eveniet ex fuga iste minus nam natus
-                nobis optio quaerat quas qui quidem quod sit vel vitae. Aliquid enim explicabo incidunt quod.</p>
+            <p class="section_text">
+                Les caractéristiques générales des castors sont celles des rongeurs, avec des différences pour chaque espèce : voir les articles détaillés pour plus d'informations, notamment sur leur constitution physique ou leur mode de vie respectif.
+                Caractéristiques communes
+                Ce sont tous des rongeurs appartenant à la famille des Castoridae dont les espèces actuelles sont de taille importante (pour des rongeurs), à poil dru gris-brun, avec de petites oreilles, de petits yeux et de grandes dents. Ils sont semi-aquatiques et vivent le plus souvent à proximité de zones boisées ou le long de berges végétalisées de grands cours d'eau. Le ragondin préfère les zones marécageuses.
+                Ils ne doivent pas être confondus avec le « castor de montagne » (Aplodontia rufa), ainsi nommé car il ressemble un peu au Castor mais qui n'est pas un castor (il appartient à la famille des Aplodontidae ; c'est un animal non aquatique des montagnes humides.
+                La progressive disparition des espèces du genre Castor en Europe puis leur raréfaction en Amérique du Nord aux 18e et 19e siècles sont dues au commerce de la fourrure, de la viande et du castoréum (sécrétion huileuse très odorante) ainsi qu'à la destruction de leur habitat.
+                Les Loutres, Lutrinae, sont une sous-famille de mammifères carnivores de la famille des Mustelidés. Il existe plusieurs espèces de loutres, caractérisées par de courtes pattes, des doigts griffus et palmés (aux pattes avant et arrière) et une longue queue.
+
+                Cette sous-famille a été décrite pour la première fois en 1838 par le zoologiste Charles-Lucien Bonaparte.</p>
         </div>
         <a href="#services"><i class="fas fa-angle-double-down"></i></a>
     </section>
 
     <section id="services" class="services">
-        <div class="px_bg2"></div>
+        {#<div class="px_bg2"></div>#}
         <div class="wrap">
+                <p class="section_text">Les Loutres, Lutrinae, sont une sous-famille de mammifères carnivores de la famille des Mustelidés. Il existe plusieurs espèces de loutres, caractérisées par de courtes pattes, des doigts griffus et palmés (aux pattes avant et arrière) et une longue queue.
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid architecto ex porro quisquam sequi,
-                sunt voluptas. At corporis fuga laboriosam obcaecati. Animi assumenda commodi cum cumque dolore ducimus
-                fugiat ipsam iure maxime minima nesciunt nisi odit quaerat quidem quo repellat repudiandae temporibus ut
-                velit, voluptate! Ad aliquam cumque deleniti dignissimos distinctio est ex harum hic ipsa iste laborum
-                minima, nostrum placeat quam quidem quis repellendus sapiente sed similique sit soluta temporibus totam
-                veritatis vitae voluptatibus. Assumenda doloribus eius eveniet ex hic iste libero magni nesciunt nihil
-                nulla obcaecati optio placeat, possimus, rem reprehenderit! Fugiat hic modi, placeat provident quia quis
-                quo. Alias architecto beatae dignissimos dolore doloremque, ea, eligendi est ex fugiat illo in magnam
-                magni odio pariatur reprehenderit saepe similique vitae. Blanditiis eius, esse eum eveniet ipsam nam non
-                similique unde vel voluptatum! Labore nemo provident vitae. Hic minus, vel? Autem iste neque qui!
-                Adipisci consectetur delectus dolore dolorum excepturi, nam placeat reiciendis soluta. A ab accusantium
-                aliquid, amet atque commodi consequatur cum cumque dicta dolore dolorum earum enim error eveniet
-                expedita explicabo harum id ipsa ipsam ipsum, iure iusto laborum laudantium neque nesciunt nihil nulla
-                obcaecati officia officiis optio praesentium quam quia saepe sapiente tempore vel voluptates.
-                Nostrum.</p>
-            <p>Cupiditate eius mollitia officia, quasi ratione repellat reprehenderit totam voluptate! Ad aliquid aut
-                blanditiis consectetur cum distinctio earum explicabo, fugit illum ipsa ipsum iste iusto laboriosam
-                magnam maiores maxime modi mollitia nihil officiis porro possimus provident quidem recusandae sapiente
-                similique suscipit temporibus totam unde veniam voluptates. Ab aliquid aut dignissimos distinctio dolor
-                dolorem eius eos eum, excepturi numquam officiis quae quasi quia sit ut. Animi assumenda autem, corporis
-                delectus dolor earum error fugit, incidunt maiores minima non pariatur perferendis possimus quae
-                quibusdam quo, sed tempore veritatis! Ad aperiam assumenda consectetur culpa itaque qui tempore
-                voluptas! A adipisci consectetur cupiditate dignissimos error ex inventore magni non? A aut possimus
-                tenetur! At dicta eum expedita harum modi natus porro quae sequi. Adipisci aliquam et molestias quam
-                quasi quibusdam quis soluta veniam. Animi blanditiis incidunt maxime repellendus sint ullam
-                voluptatibus! Animi aperiam doloremque eaque fuga minus nihil odit pariatur repellat totam unde. Alias
-                delectus doloribus eveniet sequi? Consequatur fuga natus, quis ratione recusandae tempora! Accusantium
-                aperiam aspernatur commodi, culpa delectus et voluptate! Animi consectetur dicta dignissimos
-                perspiciatis velit veniam, vitae! A adipisci, aspernatur blanditiis dignissimos dolorum eaque eius error
-                eum ex iste maxime minima nisi omnis pariatur quis sapiente suscipit, ut velit vero?</p>
+                    Cette sous-famille a été décrite pour la première fois en 1838 par le zoologiste Charles-Lucien Bonaparte.
+
+                    Dans de nombreux pays les loutres ont disparu de tout ou partie de leurs aire naturelle de répartition, de même que les castors qui partageaient leur milieu de vie. Ces deux espèces-clé font l'objet depuis un siècle environ de protection et de programmes ou projets de réintroduction2 ou confortement de populations par translocation3. La loutre étant particulièrement discrète elle fait souvent l'objet d'un suivi par recherche d'indice (poils, marquage de territoire, pièges photographiques) et d'un suivi télémétrique par puce électronique4,5.</p>
         </div>
         <a href="#news"><i class="fas fa-angle-double-down"></i></a>
     </section>
 
     <section class="news" id="news">
         <div class="wrap">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, ad aut debitis doloremque illum minima, nam
-                nisi recusandae rerum totam unde voluptatibus? Corporis cumque ducimus fuga laborum nemo, odio quae
-                saepe voluptatem. Dolorum esse facere ipsum maiores minima nostrum sed totam! Architecto at atque aut
-                dignissimos, ea minus numquam, obcaecati odio, omnis quam sint tempore voluptates. Beatae earum quisquam
-                voluptatem? Accusamus accusantium ad doloribus exercitationem ipsum optio pariatur repudiandae! Aperiam
-                culpa eligendi hic id laborum nemo recusandae ullam ut. Asperiores, consequatur deleniti dicta dolore
-                dolorum explicabo facilis hic magni mollitia perferendis porro provident, tempora veniam? Amet, dolor
-                dolorum fuga officia perspiciatis quas rem rerum? Accusamus aliquam aperiam, aut cupiditate deserunt
-                dicta doloremque doloribus esse expedita fugiat in ipsum labore libero minus natus neque non odit optio
-                possimus qui quisquam quo reiciendis reprehenderit saepe sit ullam ut voluptates! Corporis delectus
-                dignissimos ea expedita harum iste, maxime molestias ratione. Atque blanditiis cumque dicta iusto
-                tempora. Ad cum cumque delectus dolorem, doloremque enim excepturi fuga magni pariatur perferendis
-                placeat praesentium quidem quis quos, ratione veniam voluptatem. Fuga, sunt, veniam! Aliquid consectetur
-                culpa cumque doloremque eius eligendi eum in mollitia nam, nobis reprehenderit repudiandae, similique
-                voluptatum. Adipisci asperiores aspernatur dolore ea facilis ipsa sapiente?</p>
-            <p>Aperiam asperiores atque cum, debitis dolor eum iure minima quod quos recusandae reiciendis temporibus.
-                Ea eos est facere iste iusto maiores maxime nobis, praesentium rem. Aut explicabo impedit mollitia odit
-                repellat! Amet asperiores aut commodi consequuntur culpa cupiditate dolores ea est exercitationem fuga
-                fugit, hic id, itaque modi nisi nulla porro possimus quae quaerat quasi quidem quis rerum suscipit
-                voluptatem voluptates? Alias at dignissimos eum praesentium quibusdam quo saepe. At culpa illo minus
-                officiis optio ratione? Accusamus accusantium amet at consequuntur dolorem dolorum ea eligendi ex
-                explicabo, itaque iusto laudantium magni minima minus molestiae nihil provident quas ratione. Architecto
-                aspernatur autem consequatur cum cupiditate debitis deserunt distinctio dolor dolore ducimus est
-                excepturi fugit ipsam iste minus modi nostrum omnis optio provident quae quia quibusdam quis ratione rem
-                repudiandae sed sint, soluta, tempore totam voluptate? Accusamus fugit incidunt recusandae saepe
-                tempora? Accusamus consectetur consequatur corporis culpa error esse ipsam, modi necessitatibus nisi
-                perferendis praesentium quam qui, quibusdam veniam voluptas. Ad, cupiditate dolore excepturi fugit,
-                harum impedit nulla officiis perspiciatis quis ratione repellat saepe sequi temporibus totam velit.
-                Atque corporis harum libero maiores neque possimus, quia rem reprehenderit tempore velit. Blanditiis id
-                illum iusto molestias, nisi perferendis possimus quia quibusdam repellat temporibus.</p>
+                <p class="section_text">Les pélicans sont de grands oiseaux (de 105 à 350 cm) aquatiques piscivores caractérisés par un grand bec muni d'une volumineuse poche extensible.
+
+                Cosmopolites à l'exception des hautes latitudes, les pélicans fréquentent les étendues d'eau libre, à la fois sur les côtes et à l'intérieur des terres, depuis les régions tropicales jusqu'aux zones tempérées chaudes.
+
+
+                Pélican nageant au large de Cuba
+
+                Un pélican dans le « Bangabandhu Sheikh Mujib Safari Park » au Bangladesh. Mai 2018.
+                Position systématique
+                Le placement traditionnel des pélicans dans l'ordre des Pelecaniformes a été remis en question par la classification de Sibley-Ahlquist, qui les rangeait dans l'ordre élargi des ciconiidaes.
+
+                Le Bec-en-sabot du Nil (Balaeniceps rex) a longtemps été classé dans cette famille, mais des études génétiques ont montré qu'il devait être placé dans une famille séparée, celle des Balaenicipitidae.</p>
         </div>
         <a href="#contact"><i class="fas fa-angle-double-down"></i></a>
     </section>
 
     <section class="contact" id="contact">
         <div class="wrap">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci aliquam architecto commodi
-                consectetur delectus dolorem fugit harum impedit ipsa ipsam mollitia natus, nostrum odio officiis
-                pariatur, soluta ut voluptatem? A adipisci delectus ea, eos fuga harum ipsam maxime minima minus modi
-                molestiae, officia possimus quas quasi quis quo repellat sapiente, suscipit tenetur voluptas. A at autem
-                delectus dolor dolore, fuga inventore necessitatibus perferendis perspiciatis, quia ratione repellat?
-                Beatae corporis eius minima modi officiis. A asperiores consectetur, corporis eius expedita facere
-                fugit, harum laudantium maxime modi odit praesentium quas totam. Ea nulla quidem quo sed sequi vel,
-                voluptatum? Aliquam asperiores dicta distinctio eligendi enim est hic impedit laborum laudantium, libero
-                maxime minus modi neque nihil nisi odio, officiis pariatur porro praesentium quam quas quia quod
-                temporibus totam ullam vel velit veritatis? Adipisci aspernatur deleniti dignissimos dolorem doloremque
-                ducimus eius fugiat impedit laboriosam molestiae nemo nobis quaerat quod, recusandae reprehenderit saepe
-                sint voluptatibus? Accusantium at autem dignissimos est facere illo impedit iste, magnam, molestias odio
-                officia, placeat praesentium quis quos rem sapiente tempora. Beatae commodi fuga hic iusto laborum omnis
-                temporibus, voluptates! Ab, adipisci corporis, expedita facere itaque iusto labore laudantium maiores
-                necessitatibus nisi omnis quisquam tenetur voluptate? Amet, illum nam?</p>
-            <p>Aliquid atque cum deserunt dicta exercitationem expedita, fuga id illo mollitia natus, nesciunt quasi
-                sint voluptatibus. Ad adipisci alias aliquam amet aperiam architecto asperiores at beatae culpa deleniti
-                distinctio ea eveniet excepturi fugiat hic inventore laboriosam maiores maxime molestiae molestias natus
-                nemo neque officiis, perferendis perspiciatis quae quasi quibusdam quis quod quos rerum soluta
-                voluptatem voluptates. Adipisci dolorum error, fuga impedit labore nostrum, officiis pariatur
-                praesentium provident quis repudiandae temporibus. Adipisci alias aperiam, corporis cumque doloremque
-                eaque eum laborum magnam maxime necessitatibus nisi placeat porro praesentium, quae quam quidem rem
-                repellat rerum sed sint soluta tenetur vel? Ad amet ducimus recusandae tenetur. Animi assumenda, atque
-                autem distinctio minus omnis quam voluptatum? Adipisci dolore error mollitia nam sit unde voluptatibus.
-                Ad aliquid amet consequatur cumque delectus, dicta doloremque esse est eum facilis illum incidunt
-                molestiae necessitatibus nemo nesciunt nisi nobis non placeat possimus quam quidem ratione, rerum sequi,
-                temporibus vitae. Aperiam aut cumque maxime minima neque optio placeat voluptates. Corporis debitis
-                perferendis recusandae tenetur. A corporis cupiditate dolore dolores expedita laboriosam rem
-                reprehenderit suscipit vel veritatis. Accusantium animi architecto cum delectus deserunt dicta eaque,
-                est, eum laboriosam laborum libero magni nam pariatur perspiciatis porro, quidem sequi similique tempora
-                tempore vitae? Et?</p>
+            <div class="section_text">
+                La licorne, parfois nommée unicorne, est une créature légendaire à corne unique. Son origine, controversée, résulte de multiples influences, en particulier de descriptions d'animaux tels que le rhinocéros et l'antilope, issues de récits d'explorateurs. Les premières représentations attestées d'animaux unicornes remontent à la civilisation de l'Indus. Le récit sanskrit d'Ekasringa et les routes commerciales pourraient avoir joué un rôle dans leur diffusion vers le Proche-Orient.
+
+                Connue dans l'Occident chrétien depuis l'Antiquité grecque par des récits de voyageurs en Perse et en Inde, sous le nom de « monocéros », la licorne occidentale se distingue de ses consœurs asiatiques par son apparence, son symbolisme et son histoire. Sous l'influence du Physiologus, les bestiaires occidentaux et leurs miniatures la décrivent comme un animal sylvestre très féroce, symbole de pureté et de grâce, attiré par l'odeur de la virginité. Le récit de sa chasse, durant laquelle une jeune fille vierge aide les chasseurs à la capturer, se diffuse dans tout l'Occident chrétien ainsi qu'une partie du monde musulman. La représentation physique de la licorne occidentale se fixe
+                </p>
         </div>
+
     </section>
 
 
