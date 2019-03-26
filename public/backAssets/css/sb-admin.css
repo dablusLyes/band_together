@@ -161,13 +161,13 @@ sup {
 }
 
 a {
-  color: #007bff;
+  color: #ffffff;
   text-decoration: none;
   background-color: transparent;
 }
 
 a:hover {
-  color: #0056b3;
+  color: #adadad;
   text-decoration: underline;
 }
 
@@ -6827,7 +6827,7 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #343a40 !important;
+  background-color: #252525 !important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
@@ -10487,7 +10487,7 @@ body {
 
 .sidebar {
   width: 90px !important;
-  background-color: #212529;
+  background-color: #ffcc46;
   min-height: calc(100vh - 56px);
 }
 
@@ -10524,7 +10524,7 @@ body {
 }
 
 .sidebar .nav-item .nav-link {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(37, 37, 37, 1);
 }
 
 .sidebar .nav-item .nav-link:active, .sidebar .nav-item .nav-link:focus, .sidebar .nav-item .nav-link:hover {

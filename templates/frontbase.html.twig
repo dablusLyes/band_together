@@ -10,7 +10,9 @@
     <title>{% block title %}Band Together{% endblock %}</title>
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+              integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+              crossorigin="anonymous">
     {% endblock %}
 
 </head>
@@ -19,8 +21,26 @@
 
 {% block body %}{% endblock %}
 
+<footer>
+    <div class="wrap">
+        <div class="footer_container">
+            <div class="footer_item footer_item1">
+                <h2>Réseaux Sociaux</h2>
+            </div>
+            <div class="footer_item footer_item2">
+                <h2>Liens</h2>
+            </div>
+            <div class="footer_item footer_item3">
+                <h2>blabla</h2>
+            </div>
+        </div>
+        <p class="copyright"> BandTogether 2019 @ All Rights Reserved</p>
+    </div>
+</footer>
+
 {% block javascripts %}
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <!-- Google Analytics -->
     {#<script async src="https://www.googletagmanager.com/gtag/js?id=UA-136670597-1"></script>#}
