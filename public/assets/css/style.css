@@ -39,22 +39,21 @@ header{
 }
 header nav ul{
     display: flex;
-    height: 50px;
-    line-height: 50px;
+    height: 60px;
+    line-height: 60px;
     justify-content: center;
     background-color: rgba(37,37,37,.6);
 }
 
 header nav ul li a {
-    font-size: 1.2em;
-    padding: 10px;
+    font-size: 1.3em;
+    padding: 15px;
     color: #FCBB26;
     text-decoration: none;
     border: solid 1px transparent;
 }
 
 header nav ul li a:hover{
-    /*text-decoration: underline;*/
     border: solid #FFCC46;
     border-width: 0 1px;
     color: white;
@@ -67,6 +66,32 @@ header nav ul li a:hover{
     background-size: cover;
     height: 100vh;
 }
+
+.px_bg2 {
+    background: url("../img/bg2.jpg") no-repeat fixed;
+    background-size: cover;
+    height: 100vh;
+}
+
+.px_bg3 {
+    background: url("../img/bg3.jpg") no-repeat fixed;
+    background-size: cover;
+    height: 100vh;
+}
+
+.px_bg4 {
+    background: url("../img/bg6.jpg") no-repeat fixed;
+    background-size: cover;
+    height: 100vh;
+}
+
+.px_bg5 {
+    background: url("../img/footerbg.jpg") no-repeat fixed top;
+    background-size: cover;
+    height: 30vh;
+}
+
+
 
 section.home{
     position: relative;
@@ -177,6 +202,7 @@ section.contact i {
     transform: translate(-50%,-50%);
 }
 
+
 /* ====================================== */
 
 .section_container{
@@ -195,4 +221,37 @@ section img{
     width: 300px;
     display: block;
     margin: 0 auto 50px;
+}
+
+/*============= * FOOTER * ===============*/
+
+footer {
+    padding: 50px 0;
+    /*position: relative;*/
+    background-color: #AC3931;
+    -moz-box-shadow: inset 0px 20px 20px -25px #000000;
+    -webkit-box-shadow: inset 0px 20px 20px -25px #000000;
+    -o-box-shadow: inset 0px 20px 20px -25px #000000;
+    box-shadow: inset 0px 20px 20px -25px #000000;
+}
+
+.copyright{
+    padding: 100px 0 0 0;
+    color: white;
+    font-size: 1.3em;
+    text-align: center;
+    /*position: absolute;*/
+    /*bottom: 10%;*/
+    /*left: 50%;*/
+    /*transform: translate(-50%,-50%);*/
+}
+
+.footer_container{
+    display: flex;
+    justify-content: space-around;
+}
+
+footer h2 {
+    font-size: 1.5em;
+    color: white;
 }
