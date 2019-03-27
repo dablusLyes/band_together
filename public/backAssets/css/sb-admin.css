@@ -2575,6 +2575,12 @@ textarea.form-control {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
+.btn-search{
+  background-color: #FFCC46;
+}
+.btn-search i{
+  color: white;
+}
 
 @media screen and (prefers-reduced-motion: reduce) {
   .btn {

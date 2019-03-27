@@ -33,12 +33,12 @@ class UserFixtures extends Fixture
 
           $manager->persist($user_admin);
 
-          $names = ['michel', 'tartenpion', 'antoine', 'yoda', 'obiwan', 'frederic', 'faillot', 'macron','jeanphil'];
+          $names = ['michel', 'tartenpion', 'antoine', 'yoda', 'obiwan', 'frederic', 'faillot', 'macron','jeanphil', 'tartine'];
 
           for ($i=0; $i < 100; $i++) {
             $name = $names[rand(0, count($names) - 1)].$i;
             $user = new User();
-            $user->setUsername($name[rand(0, count($name) - 1)]);
+            $user->setUsername($name);
             $user->setEmail("$name@gmail.com");
             $user->setCreatedAt(new \Datetime);
 

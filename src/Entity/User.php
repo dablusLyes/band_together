@@ -43,16 +43,6 @@ class User implements UserInterface
     private $token;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Instrument", inversedBy="users")
-     */
-    private $instrument;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Style", inversedBy="users")
-     */
-    private $style;
-
-    /**
      * @ORM\Column(type="string", length=100)
      */
     private $username;
@@ -92,10 +82,20 @@ class User implements UserInterface
      */
     private $url_video;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Style", inversedBy="users")
+     */
+    private $style;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Groupe", mappedBy="membres")
+     */
+    private $groupes;
+
     public function __construct()
     {
-        $this->instrument = new ArrayCollection();
         $this->style = new ArrayCollection();
+        $this->groupes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -200,58 +200,6 @@ class User implements UserInterface
       return $token;
     }
 
-    /**
-     * @return Collection|Instrument[]
-     */
-    public function getInstrument(): Collection
-    {
-        return $this->instrument;
-    }
-
-    public function addInstrument(Instrument $instrument): self
-    {
-        if (!$this->instrument->contains($instrument)) {
-            $this->instrument[] = $instrument;
-        }
-
-        return $this;
-    }
-
-    public function removeInstrument(Instrument $instrument): self
-    {
-        if ($this->instrument->contains($instrument)) {
-            $this->instrument->removeElement($instrument);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Style[]
-     */
-    public function getStyle(): Collection
-    {
-        return $this->style;
-    }
-
-    public function addStyle(Style $style): self
-    {
-        if (!$this->style->contains($style)) {
-            $this->style[] = $style;
-        }
-
-        return $this;
-    }
-
-    public function removeStyle(Style $style): self
-    {
-        if ($this->style->contains($style)) {
-            $this->style->removeElement($style);
-        }
-
-        return $this;
-    }
-
     public function setUsername(string $username): self
     {
         $this->username = $username;
@@ -339,6 +287,72 @@ class User implements UserInterface
     public function setUrlVideo(?string $url_video): self
     {
         $this->url_video = $url_video;
+
+        return $this;
+    }
+
+    public function getUserInstrument(): ?UserInstrument
+    {
+        return $this->userInstrument;
+    }
+
+    public function setUserInstrument(?UserInstrument $userInstrument): self
+    {
+        $this->userInstrument = $userInstrument;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Style[]
+     */
+    public function getStyle(): Collection
+    {
+        return $this->style;
+    }
+
+    public function addStyle(Style $style): self
+    {
+        if (!$this->style->contains($style)) {
+            $this->style[] = $style;
+        }
+
+        return $this;
+    }
+
+    public function removeStyle(Style $style): self
+    {
+        if ($this->style->contains($style)) {
+            $this->style->removeElement($style);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Groupe[]
+     */
+    public function getGroupes(): Collection
+    {
+        return $this->groupes;
+    }
+
+    public function addGroupe(Groupe $groupe): self
+    {
+        if (!$this->groupes->contains($groupe)) {
+            $this->groupes[] = $groupe;
+            $groupe->addMembre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroupe(Groupe $groupe): self
+    {
+        if ($this->groupes->contains($groupe)) {
+            $this->groupes->removeElement($groupe);
+            $groupe->removeMembre($this);
+        }
 
         return $this;
     }

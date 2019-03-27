@@ -28,14 +28,9 @@ class Instrument
      */
     private $categorie;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="instrument")
-     */
-    private $users;
-
     public function __construct()
     {
-        $this->users = new ArrayCollection();
+        $this->userInstruments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -68,28 +63,31 @@ class Instrument
     }
 
     /**
-     * @return Collection|User[]
+     * @return Collection|UserInstrument[]
      */
-    public function getUsers(): Collection
+    public function getUserInstruments(): Collection
     {
-        return $this->users;
+        return $this->userInstruments;
     }
 
-    public function addUser(User $user): self
+    public function addUserInstrument(UserInstrument $userInstrument): self
     {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->addInstrument($this);
+        if (!$this->userInstruments->contains($userInstrument)) {
+            $this->userInstruments[] = $userInstrument;
+            $userInstrument->setInstrument($this);
         }
 
         return $this;
     }
 
-    public function removeUser(User $user): self
+    public function removeUserInstrument(UserInstrument $userInstrument): self
     {
-        if ($this->users->contains($user)) {
-            $this->users->removeElement($user);
-            $user->removeInstrument($this);
+        if ($this->userInstruments->contains($userInstrument)) {
+            $this->userInstruments->removeElement($userInstrument);
+            // set the owning side to null (unless already changed)
+            if ($userInstrument->getInstrument() === $this) {
+                $userInstrument->setInstrument(null);
+            }
         }
 
         return $this;
