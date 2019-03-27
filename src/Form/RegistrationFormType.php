@@ -17,6 +17,7 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('username', TextType::class)
             ->add('email', RepeatedType::class, [
                   'type' => EmailType::class,
                   'invalid_message' => 'Les deux champs mail doivent être identique.',
