@@ -28,8 +28,14 @@ class Style
      */
     private $categoerie;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="style")
+     */
+    private $users;
+
     public function __construct()
     {
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -57,6 +63,34 @@ class Style
     public function setCategoerie(?string $categoerie): self
     {
         $this->categoerie = $categoerie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addStyle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
+            $user->removeStyle($this);
+        }
 
         return $this;
     }

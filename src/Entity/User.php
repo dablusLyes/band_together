@@ -82,9 +82,20 @@ class User implements UserInterface
      */
     private $url_video;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Style", inversedBy="users")
+     */
+    private $style;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Groupe", mappedBy="membres")
+     */
+    private $groupes;
+
     public function __construct()
     {
-
+        $this->style = new ArrayCollection();
+        $this->groupes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -288,6 +299,60 @@ class User implements UserInterface
     public function setUserInstrument(?UserInstrument $userInstrument): self
     {
         $this->userInstrument = $userInstrument;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Style[]
+     */
+    public function getStyle(): Collection
+    {
+        return $this->style;
+    }
+
+    public function addStyle(Style $style): self
+    {
+        if (!$this->style->contains($style)) {
+            $this->style[] = $style;
+        }
+
+        return $this;
+    }
+
+    public function removeStyle(Style $style): self
+    {
+        if ($this->style->contains($style)) {
+            $this->style->removeElement($style);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Groupe[]
+     */
+    public function getGroupes(): Collection
+    {
+        return $this->groupes;
+    }
+
+    public function addGroupe(Groupe $groupe): self
+    {
+        if (!$this->groupes->contains($groupe)) {
+            $this->groupes[] = $groupe;
+            $groupe->addMembre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroupe(Groupe $groupe): self
+    {
+        if ($this->groupes->contains($groupe)) {
+            $this->groupes->removeElement($groupe);
+            $groupe->removeMembre($this);
+        }
 
         return $this;
     }
