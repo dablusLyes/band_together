@@ -38,7 +38,7 @@ class UserFixtures extends Fixture
           for ($i=0; $i < 100; $i++) {
             $name = $names[rand(0, count($names) - 1)].$i;
             $user = new User();
-            $user->setUsername($name[rand(0, count($name) - 1)]);
+            $user->setUsername($name);
             $user->setEmail("$name@gmail.com");
             $user->setCreatedAt(new \Datetime);
 
