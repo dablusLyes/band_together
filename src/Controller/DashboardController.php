@@ -12,7 +12,7 @@ class DashboardController extends AbstractController
      */
     public function index()
     {
-        return $this->render('backoffice/dashboard/index.html.twig', [
+        return $this->render('dashboard.html.twig', [
             'controller_name' => 'DashboardController',
         ]);
     }

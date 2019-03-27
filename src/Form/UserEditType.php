@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class User1Type extends AbstractType
+class UserEditType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -25,7 +25,6 @@ class User1Type extends AbstractType
                 'expanded' => true,
                 'multiple' => true
             ))
-            ->add('password', TextType::class)
         ;
     }
 
