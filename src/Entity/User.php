@@ -24,18 +24,25 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank
+     * @Assert\Length(min=10)
+     * @Assert\Length(max=150)
+     */
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
-     * 
+     *
      */
     private $roles = [];
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank
+     * @Assert\Length(min=6)
+     * @Assert\Length(max=30)
      */
     private $password;
 
@@ -46,6 +53,9 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank
+     * @Assert\Length(min=6)
+     * @Assert\Length(max=30)
      */
     private $username;
 
@@ -61,16 +71,23 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Length(min=6)
+     * @Assert\Length(max=30)
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Length(min=6)
+     * @Assert\Length(max=30)
      */
     private $surname;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(max=3000)
      */
     private $description;
 
