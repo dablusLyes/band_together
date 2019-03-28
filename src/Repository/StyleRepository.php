@@ -19,6 +19,26 @@ class StyleRepository extends ServiceEntityRepository
         parent::__construct($registry, Style::class);
     }
 
+    public function countStyle()
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('SELECT COUNT(s.id) FROM App\Entity\Style s');
+        $count = $query->getSingleScalarResult();
+        return $count;
+    }
+
+    public function selectManyStyle($off, $lim = 10)
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('SELECT s FROM
+                                  App\Entity\Style s
+                                  ORDER BY s.id ASC')
+                                  ->setFirstResult($off)
+                                  ->setMaxResults($lim);
+
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Style[] Returns an array of Style objects
     //  */

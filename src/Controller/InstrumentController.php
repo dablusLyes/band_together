@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use JasonGrimes\Paginator;
 
 /**
  * @Route("/instrument")
@@ -18,10 +19,20 @@ class InstrumentController extends AbstractController
     /**
      * @Route("/", name="instrument_index", methods={"GET"})
      */
-    public function index(InstrumentRepository $instrumentRepository): Response
+    public function index(InstrumentRepository $instrumentRepository, Request $request): Response
     {
+      $totalItems = $instrumentRepository->countInstrument();
+      $itemsPerPage = 10;
+      $currentPage = $request->query->get('page', 1);
+      $urlPattern = '?page=(:num)';
+      $limit = 10;
+      $offset = ($currentPage * $limit) - $limit;
+
+      $paginator = new Paginator($totalItems, $itemsPerPage, $currentPage, $urlPattern);
+
         return $this->render('instrument/index.html.twig', [
-            'instruments' => $instrumentRepository->findAll(),
+            'instruments' => $instrumentRepository->selectManyInstrument($offset),
+            'paginator'  => $paginator
         ]);
     }
 

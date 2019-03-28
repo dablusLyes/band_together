@@ -1,0 +1,8 @@
+.pagination a{
+  color: rgba(37, 37, 37, 1);
+  padding: 2px;
+}
+
+.card-header a{
+  color: rgb(19, 132, 150);
+}

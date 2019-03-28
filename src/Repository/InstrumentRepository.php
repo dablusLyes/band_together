@@ -19,6 +19,26 @@ class InstrumentRepository extends ServiceEntityRepository
         parent::__construct($registry, Instrument::class);
     }
 
+    public function countInstrument()
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('SELECT COUNT(i.id) FROM App\Entity\Instrument i');
+        $count = $query->getSingleScalarResult();
+        return $count;
+    }
+
+    public function selectManyInstrument($off, $lim = 10)
+    {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('SELECT i FROM
+                                  App\Entity\Instrument i
+                                  ORDER BY i.id ASC')
+                                  ->setFirstResult($off)
+                                  ->setMaxResults($lim);
+
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Instrument[] Returns an array of Instrument objects
     //  */

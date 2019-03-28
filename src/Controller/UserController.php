@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use JasonGrimes\Paginator;
 
 /**
  * @Route("/user")
@@ -19,10 +20,22 @@ class UserController extends AbstractController
     /**
      * @Route("/", name="user_index", methods={"GET"})
      */
-    public function index(UserRepository $userRepository): Response
+    public function index(UserRepository $userRepository, Request $request): Response
     {
+
+
+        $totalItems = $userRepository->countUser();
+        $itemsPerPage = 10;
+        $currentPage = $request->query->get('page', 1);
+        $urlPattern = '?page=(:num)';
+        $limit = 10;
+        $offset = ($currentPage * $limit) - $limit;
+
+        $paginator = new Paginator($totalItems, $itemsPerPage, $currentPage, $urlPattern);
+
         return $this->render('user/index.html.twig', [
-            'users' => $userRepository->findAll(),
+            'users' => $userRepository->selectManyUser($offset),
+            'paginator' => $paginator,
         ]);
     }
 
