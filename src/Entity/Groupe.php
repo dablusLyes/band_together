@@ -20,16 +20,23 @@ class Groupe
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank
+     * @Assert\Length(min=6)
+     * @Assert\Length(max=30)
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
+     * @Assert\Length(min=50)
+     * @Assert\Length(max=3000)
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max=150)
      */
     private $logo;
 
@@ -40,6 +47,7 @@ class Groupe
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max=150)
      */
     private $url_video;
 

@@ -20,11 +20,17 @@ class Instrument
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(min=6)
+     * @Assert\Length(max=30)
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Length(min=6)
+     * @Assert\Length(max=30)
      */
     private $categorie;
 
