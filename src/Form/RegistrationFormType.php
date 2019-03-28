@@ -22,11 +22,11 @@ class RegistrationFormType extends AbstractType
                 'label'                        => 'Pseudonyme',
                 'constraints'                  => [
                 new NotBlank([
-                    'message'                  => 'Please enter a password',
+                    'message'                  => 'Veuillez entrer un pseudonyme.',
                 ]),
                 new Length([
-                    'min' => 6,
-                    'minMessage'               => 'Your password should be at least {{ limit }} characters',
+                    'min'                      => 6,
+                    'minMessage'               => 'Votre pseudonyme doit faire minimum {{ limit }} caracters.',
                     // max length allowed by Symfony for security reasons
                     'max'                      => 50,
                 ]),

@@ -22,8 +22,6 @@ class UserController extends AbstractController
      */
     public function index(UserRepository $userRepository, Request $request): Response
     {
-
-
         $totalItems = $userRepository->countUser();
         $itemsPerPage = 10;
         $currentPage = $request->query->get('page', 1);
