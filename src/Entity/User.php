@@ -28,7 +28,6 @@ class User implements UserInterface
      * @Assert\Length(min=10)
      * @Assert\Length(max=150)
      */
-     */
     private $email;
 
     /**
