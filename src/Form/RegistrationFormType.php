@@ -19,14 +19,14 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('username', TextType::class, [
-                'label'                        => 'Pseudonyme',
+                'label'                        => 'Nom d\'utilisateur',
                 'constraints'                  => [
                 new NotBlank([
-                    'message'                  => 'Veuillez entrer un pseudonyme.',
+                    'message'                  => 'Veuillez renseigner un nom d\'utilisateur.',
                 ]),
                 new Length([
-                    'min'                      => 6,
-                    'minMessage'               => 'Votre pseudonyme doit faire minimum {{ limit }} caracters.',
+                    'min'                      => 4,
+                    'minMessage'               => 'Votre nom d\'utilisateur doit faire au minimum {{ limit }} caractères.',
                     // max length allowed by Symfony for security reasons
                     'max'                      => 50,
                 ]),
@@ -34,36 +34,31 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('email', RepeatedType::class, [
                   'type'                       => EmailType::class,
-                  'invalid_message'            => 'Les deux champs mail doivent être identique.',
+                  'invalid_message'            => 'Les emails ne correspondent pas.',
                   'options'                    => ['attr' => ['class' => 'email-field']],
                   'required'                   => true,
-                  'first_options'              => ['label' => 'Entrez votre Email'],
-                  'second_options'             => ['label' => 'Confirmez votre Email'],
+                  'first_options'              => ['label' => 'Email'],
+                  'second_options'             => ['label' => 'Confirmation de l\'email'],
                   'constraints'                => [
                       new NotBlank([
-                          'message'            => 'Please enter a password',
-                      ]),
-                      new Length([
-                          'min'                => 6,
-                          'minMessage'         => 'Your password should be at least {{ limit }} characters',
-                          'max'                => 50,
-                      ]),
+                          'message'            => 'Veuillez renseigner un email',
+                      ])
                   ],
             ])
             ->add('password', RepeatedType::class, [
                   'type' => PasswordType::class,
-                  'invalid_message'            => 'Les deux champs mot de passe doivent être identique.',
+                  'invalid_message'            => 'Les mots de passe ne correspondent pas',
                   'options'                    => ['attr' => ['class' => 'password-field']],
                   'required'                   => true,
-                  'first_options'              => ['label' => 'Mot de passse'],
-                  'second_options'             => ['label' => 'Confirmez votre mot de passe'],
+                  'first_options'              => ['label' => 'Mot de passe'],
+                  'second_options'             => ['label' => 'Confirmation du mot de passe'],
                   'constraints'                => [
                       new NotBlank([
                           'message'            => 'Please enter a password',
                       ]),
                       new Length([
-                          'min'                => 6,
-                          'minMessage'         => 'Your password should be at least {{ limit }} characters',
+                          'min'                => 8,
+                          'minMessage'         => 'Votre mot de passe doit faire au moins {{ limit }} caractères',
                           'max'                => 120,
                       ]),
                   ],
