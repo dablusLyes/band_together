@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use JasonGrimes\Paginator;
 
 /**
- * @Route("/style")
+ * @Route("admin/style")
  */
 class StyleController extends AbstractController
 {

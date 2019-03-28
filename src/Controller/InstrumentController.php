@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use JasonGrimes\Paginator;
 
 /**
- * @Route("/instrument")
+ * @Route("admin/instrument")
  */
 class InstrumentController extends AbstractController
 {

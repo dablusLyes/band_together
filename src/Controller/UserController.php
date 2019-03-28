@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use JasonGrimes\Paginator;
 
 /**
- * @Route("/user")
+ * @Route("admin/user")
  */
 class UserController extends AbstractController
 {
