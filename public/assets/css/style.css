@@ -119,8 +119,7 @@ section.services {
     padding: 100px;
     position: relative;
     background-color: #252525;
-    color: #FFCC46;
-}
+    color: #FFCC46; }
 
 section.services i {
     font-size: 2em;
@@ -129,8 +128,7 @@ section.services i {
     position: absolute;
     bottom: 10px;
     left: 50%;
-    transform: translate(-50%,-50%);
-}
+    transform: translate(-50%,-50%); }
 
 /*============= * NEWS SECTION * ===============*/
 
@@ -139,8 +137,7 @@ section.news {
     padding: 100px;
     position: relative;
     background-color: #FFCC46;
-    color: #252525;
-}
+    color: #252525; }
 
 section.news i {
     font-size: 2em;
@@ -149,8 +146,7 @@ section.news i {
     position: absolute;
     bottom: 10px;
     left: 50%;
-    transform: translate(-50%,-50%);
-}
+    transform: translate(-50%,-50%); }
 
 /*============= * CONTACT SECTION * ===============*/
 
@@ -163,8 +159,7 @@ section.contact {
     padding: 100px;
     position: relative;
     background-color: #666666;
-    color: white;
-}
+    color: white; }
 
 section.contact i {
     font-size: 2em;
@@ -173,33 +168,27 @@ section.contact i {
     position: absolute;
     bottom: 10px;
     left: 50%;
-    transform: translate(-50%,-50%);
-}
-
+    transform: translate(-50%,-50%); }
 
 /* ====================================== */
 
-.section_container{
+.section_container {
     display: flex;
-    flex-direction: column;
-}
+    flex-direction: column; }
 
 .section_text {
     margin-top: 100px;
     padding: 0 50px;
     font-size: 1.2em;
-    text-align: justify;
-}
+    text-align: justify; }
 
-section img{
+section img {
     width: 300px;
     display: block;
-    margin: 0 auto 50px;
-}
+    margin: 0 auto 50px; }
 
 section.contact i {
-    color: #FFCC46;
-}
+    color: #FFCC46; }
 
 /*============= * FOOTER * ===============*/
 
@@ -210,72 +199,113 @@ footer {
     -moz-box-shadow: inset 0px 20px 20px -23px #000000;
     -webkit-box-shadow: inset 0px 20px 20px -23px #000000;
     -o-box-shadow: inset 0px 20px 20px -23px #000000;
-    box-shadow: inset 0px 20px 20px -23px #000000;
-}
+    box-shadow: inset 0px 20px 20px -23px #000000; }
 
-.copyright{
+.copyright {
     padding: 100px 0 0 0;
     color: #FFCC46;
     font-size: 1.3em;
-    text-align: center;
-}
+    text-align: center; }
 
-.footer_container{
+.footer_container {
     display: flex;
-    justify-content: space-around;
-
-}
+    justify-content: space-around; }
 .footer_item{
-    flex: 1 1 0;
-}
+    flex: 1 1 0; }
 
 footer h2 {
     text-transform: uppercase;
     font-size: 1.5em;
     color: white;
     margin-bottom: 50px;
-    text-align: center;
-}
+    text-align: center; }
 
-.footer_item2 ul{
+.footer_item2 ul {
     display: flex;
-    justify-content: center;
-}
+    justify-content: center; }
 
-footer img{
+footer img {
     width: 65%;
     display: block;
-    margin: 0 auto;
-}
+    margin: 0 auto; }
 
 .footer_item1 a, .footer_item3 a {
     color: white;
     font-size: 1.2em;
     text-decoration: none;
     text-align: center;
-    display: block;
-}
-
+    display: block; }
 
 .footer_item1 a:hover, .footer_item3 a:hover{ text-decoration: underline; }
 
+/*============= * LOGIN & REGISTER * ===============*/
 
-/*============= * LOGIN SECTION * ===============*/
-
-section.login{
+section.login, section.register {
+    color: white;
     background: url("../img/homebackground.jpg") no-repeat fixed;
     background-size: cover;
     height: 100vh;
+    padding-top: 20vh;
 }
 
-section.login i {
-    font-size: 2em;
+section.login form, section.register form{
+    background-color: rgba(0,0,0,.1);
+    padding: 20px 0;
+}
+
+section.login h1, section.register h1 {
+    font-family: Bungee;
+    text-align: center;
+    font-size: 3.5vh;
+    color: #FFCC46;
+    /*text-transform: uppercase;*/
+    /*background-color: rgba(0,0,0,.1);*/
+    padding: 1vh 0;
+    margin-bottom: 5vh;
+}
+
+section.login input, section.register input {
     display: block;
+    margin: 5px auto 3vh;
+    padding: 5px;
+    text-align: center;
+    width: 30%;
+}
+section.login input[type=submit], section.register input[type=submit] {
+    width: 15%;
+    background-color: rgba(25,25,25,.5);
     color: white;
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    padding: 10px;
+    border: solid 1px white;
 }
 
-/*============= * PROFIL SECTION * ===============*/
+section.login input[type=submit]:hover, section.register input[type=submit]:hover{
+    color: #FFCC46;
+    border-color: #FFCC46;
+}
+
+section.login label, section.register label {
+    display: block;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+section.login span.badge-danger, section.register span.badge-danger{ display: none; }
+
+section.login span.form-error-message, section.register span.form-error-message {
+    display: block;
+    color: red;
+    margin-top: 5px;
+    font-size: 0.7em;
+}
+
+section.login input[type=checkbox]{
+    display: inline;
+    width: auto;
+    margin: 0 1% 0 5%;
+}
+
+section.login label.checkbox {
+    display: inline;
+    color: white;
+}

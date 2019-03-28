@@ -1,17 +1,21 @@
-{% extends 'base.html.twig' %}
+{% extends 'frontbase.html.twig' %}
 
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-    <h1>Inscription</h1>
+    <section class="register">
+        <div class="wrap">
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.email.first) }}
-        {{ form_row(registrationForm.email.second) }}
-        {{ form_row(registrationForm.password.first) }}
-        {{ form_row(registrationForm.password.second) }}
+            {{ form_start(registrationForm) }}
+            <h1>Inscription</h1>
+            {{ form_row(registrationForm.username) }}
+            {{ form_row(registrationForm.email.first) }}
+            {{ form_row(registrationForm.email.second) }}
+            {{ form_row(registrationForm.password.first) }}
+            {{ form_row(registrationForm.password.second) }}
 
-        <button class="btn">Inscription</button>
-    {{ form_end(registrationForm) }}
+            <input type="submit" value="Inscription">
+            {{ form_end(registrationForm) }}
+        </div>
+    </section>
 {% endblock %}

@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
 
@@ -42,7 +43,10 @@ class RegistrationFormType extends AbstractType
                   'constraints'                => [
                       new NotBlank([
                           'message'            => 'Veuillez renseigner un email',
-                      ])
+                      ]),
+                      new Email([
+                          'message'            => 'L\'email n\'est pas valide',
+                      ]),
                   ],
             ])
             ->add('password', RepeatedType::class, [
