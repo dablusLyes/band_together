@@ -46,12 +46,13 @@ header nav ul li a {
     color: #FCBB26;
     text-decoration: none;
     position: relative;
-    /*border: solid 1px transparent;*/ }
+    /*border: solid 1px transparent;*/
+}
 
-/*header nav ul li a:hover {
-    border: solid #FFCC46;
-    border-width: 0 1px;
-    color: white; }*/
+/*header nav ul li a:hover {*/
+    /*border: solid #FFCC46;*/
+    /*border-width: 0 1px;*/
+    /*color: white; }*/
 
 header nav ul li a:before {
     content: "";
@@ -100,13 +101,14 @@ section.home h1 {
     left: 50%;
     transform: translate(-50%,-50%); }
 
-section.home i{
+#fdp, #fdpa, section.home i{
     font-size: 2em;
     color: white;
     position: absolute;
     bottom: 10px;
     left: 50%;
-    transform: translate(-50%,-50%); }
+    transform: translate(-50%,-50%);}
+
 
 /*============= * ABOUT SECTION * ===============*/
 

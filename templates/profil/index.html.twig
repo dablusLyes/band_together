@@ -1,9 +1,64 @@
-{% extends 'profilbase.html.twig' %}
+{% extends 'frontbase.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="profil.css">
+    <link rel="stylesheet" href="assets/css/profil.css">
 {% endblock %}
 
 {% block body %}
-        {# {{ form(form) }} #}
+    <div class="main_container">
+        <header>
+            <img src="assets/img/logo.png" alt="logo Band Together">
+            <nav>
+                <ul>
+                    <li><a href="#">Profil</a></li>
+                    <li><a href="#">Près de vous</a></li>
+                    <li><a href="#">Recherche</a></li>
+                    <li><a href="#">Groupe</a></li>
+                </ul>
+
+                <div class="switch_menu"></div>
+                <a href="#">
+                    <div class="logout">déconnexion</div>
+                </a>
+            </nav>
+        </header>
+
+        <div class="section_container">
+            <section class="profil">
+
+                <h1>Mon Profil</h1>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi deleniti dolor eum iure maiores
+                    voluptate? Adipisci assumenda at cumque doloribus dolorum excepturi, exercitationem illo magnam
+                    natus nesciunt nisi nobis odit pariatur porro praesentium qui quia quidem repellendus sequi
+                    similique sunt tempora ullam voluptate voluptates voluptatum. Eius et expedita iure molestiae nobis
+                    quam quisquam repudiandae vitae. Eaque enim exercitationem fugit officiis recusandae rem similique.
+                    A aliquam, architecto corporis incidunt ipsut cumque dolorum, eum fugit minima optio qui quibusdam
+                    quidem similique vitae. Ab, ad alias aliquid assumenda commodi consequatur eaque, id illum labore,
+                    molestiae odio qui repellat rerum? Aliquam asperiores assumenda atque blanditiis consequatur
+                    delectus deserunt dolor eos, esse et eum, facilis harum ipsum laboriosam molestiae nam natus
+                    nesciunt non numquam officia pariatur quas quibusdam quo recusandae reiciendis repellendus
+                    repudiandae similique sint, tempora tempore ullam veniam veritatis voluptatum. Adipisci alias atque
+                    cumque distinctio laborum nulla praesentium rerum.</p>
+
+            </section>
+
+            <section class="nearyou">
+
+                <h2>Près de vous</h2>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi autem beatae commodi consequuntur culpa deleniti, dolor dolorum excepturi fugiat iusto, magni maxime nobis nostrum obcaecati officia officiis pariatur porro, possimus quas qui repellendus tempora ullam unde voluptates. Dignissimos error quis recusandae suscipit tempore. Accusamus deserunt facilis in obcaecati? Accusantium culpa dicta, ducimus eum, explicabo inventore ipsum libero neque nihil odio porro reprehenderit repudiandae sit, temporibus totam veniam vero. Aspernatur consectetur delectus deleniti dolor explicabo facilis inventore itaque labore, modi molestiae nemo non odit quam reiciendis vel! Corporis dolores, et expedita, id maxime minus non quaerat quis repellendus repudiandae velit.</p>
+            </section>
+
+            <section class="search">
+
+                <h2>Recherche</h2>
+                <p>Formulaire blabla</p>
+
+            </section>
+        </div>
+    </div>
+
+
+    {# {{ form(form) }} #}
 {% endblock %}
