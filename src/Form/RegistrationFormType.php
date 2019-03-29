@@ -21,17 +21,6 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('username', TextType::class, [
                 'label'                        => 'Nom d\'utilisateur',
-                'constraints'                  => [
-                new NotBlank([
-                    'message'                  => 'Veuillez renseigner un nom d\'utilisateur.',
-                ]),
-                new Length([
-                    'min'                      => 4,
-                    'minMessage'               => 'Votre nom d\'utilisateur doit faire au minimum {{ limit }} caractères.',
-                    // max length allowed by Symfony for security reasons
-                    'max'                      => 50,
-                ]),
-              ],
             ])
             ->add('email', RepeatedType::class, [
                   'type'                       => EmailType::class,
@@ -40,14 +29,6 @@ class RegistrationFormType extends AbstractType
                   'required'                   => true,
                   'first_options'              => ['label' => 'Email'],
                   'second_options'             => ['label' => 'Confirmation de l\'email'],
-                  'constraints'                => [
-                      new NotBlank([
-                          'message'            => 'Veuillez renseigner un email',
-                      ]),
-                      new Email([
-                          'message'            => 'L\'email n\'est pas valide',
-                      ]),
-                  ],
             ])
             ->add('password', RepeatedType::class, [
                   'type' => PasswordType::class,
@@ -56,16 +37,6 @@ class RegistrationFormType extends AbstractType
                   'required'                   => true,
                   'first_options'              => ['label' => 'Mot de passe'],
                   'second_options'             => ['label' => 'Confirmation du mot de passe'],
-                  'constraints'                => [
-                      new NotBlank([
-                          'message'            => 'Please enter a password',
-                      ]),
-                      new Length([
-                          'min'                => 8,
-                          'minMessage'         => 'Votre mot de passe doit faire au moins {{ limit }} caractères',
-                          'max'                => 120,
-                      ]),
-                  ],
             ]);
     }
 
