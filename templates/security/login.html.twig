@@ -11,6 +11,10 @@
     <section class="login">
         <div class="wrap">
 
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
             <form method="post">
 
                 <h1>Connexion</h1>
