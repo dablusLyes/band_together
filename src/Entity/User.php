@@ -70,17 +70,11 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Length(min=6)
-     * @Assert\Length(max=30)
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Length(min=6)
-     * @Assert\Length(max=30)
      */
     private $surname;
 

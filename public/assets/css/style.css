@@ -45,13 +45,35 @@ header nav ul li a {
     padding: 15px;
     color: #FCBB26;
     text-decoration: none;
-    border: solid 1px transparent; }
+    position: relative;
+    /*border: solid 1px transparent;*/ }
 
-header nav ul li a:hover {
+/*header nav ul li a:hover {
     border: solid #FFCC46;
     border-width: 0 1px;
-    color: white; }
+    color: white; }*/
 
+header nav ul li a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    background-color: #FFCC46;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+header nav ul li a:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    transition: 0.2s;
+}
 /*============================= * PARALLAX HOME PAGE* ===============================*/
 .px_bg1 { background: url("../img/homebackground.jpg") no-repeat fixed;}
 .px_bg2 { background: url("../img/bg2.jpg") no-repeat fixed;}
