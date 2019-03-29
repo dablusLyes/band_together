@@ -1,0 +1,54 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Groupe index{% endblock %}
+
+{% block body %}
+    <h1>Groupe index</h1>
+
+    <div class="container-fluid">
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fas fa-table"></i> Liste des instruments <a href="{{ path('groupe_new') }}">Create new</a>"></div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Logo</th>
+                <th>Url_video</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for groupe in groupes %}
+            <tr>
+                <td>{{ groupe.id }}</td>
+                <td>{{ groupe.name }}</td>
+                <td>{{ groupe.description }}</td>
+                <td>{{ groupe.logo }}</td>
+                <td>{{ groupe.urlVideo }}</td>
+                <td>{{ groupe.createdAt ? groupe.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ groupe.updatedAt ? groupe.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('groupe_show', {'id': groupe.id}) }}">show</a>
+                    <a href="{{ path('groupe_edit', {'id': groupe.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
