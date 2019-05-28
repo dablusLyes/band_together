@@ -24,9 +24,8 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Assert\NotBlank
-     * @Assert\Length(min=10)
-     * @Assert\Length(max=150)
+     * @Assert\NotBlank(message = "Merci de renseigner une adresse email")
+     * @Assert\Email(message="Veuillez renseigner un email valide")
      */
     private $email;
 
@@ -39,11 +38,21 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Assert\NotBlank
-     * @Assert\Length(min=6)
-     * @Assert\Length(max=30)
+     * @Assert\NotBlank(message = "Merci de choisir un mot de passe")
+     * @Assert\EqualTo(propertyPath="passwordConfirm", message="Les mots de passe ne correspondent pas")
+     * @Assert\Length(
+     *      min = 8,
+     *      max = 30,
+     *      minMessage = " Le mot de passe doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le mot de passe ne doit pas faire plus de {{ limit }} caractères"
+     * )
      */
     private $password;
+
+    /*
+     * @Assert\EqualTo(propertyPath="password", message="Les mots de passe ne correspondent pas") 
+     */
+    public $passwordConfirm;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -52,9 +61,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Assert\NotBlank
-     * @Assert\Length(min=6)
-     * @Assert\Length(max=30)
+     * @Assert\NotBlank(message="Merci de choisir un nom d'utilisateur")
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 30,
+     *      minMessage = "Le nom d'utilisateur doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Le nom d'utilisateur doit faire moins de {{ limit }} caractères"
+     * )
      */
     private $username;
 
@@ -144,7 +157,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string) $this->username;
     }
 
     /**
@@ -174,7 +187,7 @@ class User implements UserInterface
         return (string) $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(string $password = null): self
     {
         $this->password = $password;
 
@@ -222,7 +235,7 @@ class User implements UserInterface
       return $token;
     }
 
-    public function setUsername(string $username): self
+    public function setUsername(string $username = null): self
     {
         $this->username = $username;
 

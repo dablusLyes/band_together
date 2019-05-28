@@ -10,13 +10,12 @@
     <section class="register">
         <div class="wrap">
 
-            {{ form_start(registrationForm) }}
+            {{ form_start(registrationForm, {'attr': {'novalidate': 'novalidate'}}) }}
             <h1>Inscription</h1>
             {{ form_row(registrationForm.username) }}
-            {{ form_row(registrationForm.email.first) }}
-            {{ form_row(registrationForm.email.second) }}
-            {{ form_row(registrationForm.password.first) }}
-            {{ form_row(registrationForm.password.second) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.password) }}
+            {{ form_row(registrationForm.passwordConfirm) }}
 
             <input type="submit" value="Inscription">
             {{ form_end(registrationForm) }}

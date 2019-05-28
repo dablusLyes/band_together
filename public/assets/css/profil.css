@@ -20,22 +20,76 @@ html {
 
 body {
     font-family: Calibri;
-    font-size: 16px; }
+    font-size: 16px; 
+    height: 100vh;
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
 
 .main_container{
     display: flex;
 }
 
-/*================= * NAV * =====================*/
+
+/* ===================================== HEADER ======================================== */
 
 header{
     flex-basis: 15%;
     height: 100vh;
     background-color: #FFCC46;
     color: white;
+    position: relative;
+}
+
+header .img_container{
+    width: 100%;
+    margin: 4vh 0;
+}
+
+header .img_container img{
+    width: 60%;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+#username{
+    font-size: 1.5em;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 5vh;
+}
+
+header ul li a, #logout{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-size: 1.5em;
+    padding: 5px 0;
 
 }
+
+header ul li a:hover, #logout:hover{
+    background-color: rgba(0, 0, 0, .3);
+    color: white;
+}
+
+#logout{
+    position: absolute;
+    bottom: 5vh;
+    width: 100%;
+}
+
 
 .section_container{
     flex-basis: 75%;
 }
+
+section#profil, section#search, section#band{
+    height: 100vh;
+}
+
