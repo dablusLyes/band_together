@@ -30,7 +30,7 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            $user->setToken($user->generateToken());
+            $user->setToken();
             $user->setCreatedAt(new \Datetime);
 
             $entityManager = $this->getDoctrine()->getManager();

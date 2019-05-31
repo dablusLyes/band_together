@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -50,7 +48,7 @@ class User implements UserInterface
     private $password;
 
     /*
-     * @Assert\EqualTo(propertyPath="password", message="Les mots de passe ne correspondent pas") 
+     * @Assert\EqualTo(propertyPath="password", message="Les mots de passe ne correspondent pas")
      */
     public $passwordConfirm;
 
@@ -98,26 +96,6 @@ class User implements UserInterface
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $url_music;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $url_video;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Style", inversedBy="users")
-     */
-    private $style;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Groupe", mappedBy="membres")
-     */
-    private $groupes;
-
-    /**
      * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $city;
@@ -126,12 +104,6 @@ class User implements UserInterface
      * @ORM\Column(type="integer", nullable=true)
      */
     private $zipcode;
-
-    public function __construct()
-    {
-        $this->style = new ArrayCollection();
-        $this->groupes = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -216,23 +188,16 @@ class User implements UserInterface
         return $this->token;
     }
 
-    public function setToken(string $token): self
+    public function setToken()
     {
+        $strings = 'azertTYUIOplqsdfg2654786589BVDSqksppkfdsq';
+        $token = '';
+
+        for ($i=0; $i < 100; $i++) {
+          $token .= $strings[rand(0, strlen($strings) - 1)];
+        }
+
         $this->token = $token;
-
-        return $this;
-    }
-
-    public function generateToken()
-    {
-      $strings = 'azertTYUIOplqsdfg2654786589BVDSqksppkfdsq';
-      $token = '';
-
-      for ($i=0; $i < 100; $i++) {
-        $token .= $strings[rand(0, strlen($strings) - 1)];
-      }
-
-      return $token;
     }
 
     public function setUsername(string $username = null): self
@@ -298,120 +263,6 @@ class User implements UserInterface
     public function setDescription(?string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getUrlMusic(): ?string
-    {
-        return $this->url_music;
-    }
-
-    public function setUrlMusic(?string $url_music): self
-    {
-        $this->url_music = $url_music;
-
-        return $this;
-    }
-
-    public function getUrlVideo(): ?string
-    {
-        return $this->url_video;
-    }
-
-    public function setUrlVideo(?string $url_video): self
-    {
-        $this->url_video = $url_video;
-
-        return $this;
-    }
-
-    public function getUserInstrument(): ?UserInstrument
-    {
-        return $this->userInstrument;
-    }
-
-    public function setUserInstrument(?UserInstrument $userInstrument): self
-    {
-        $this->userInstrument = $userInstrument;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Style[]
-     */
-    public function getStyle(): Collection
-    {
-        return $this->style;
-    }
-
-    public function addStyle(Style $style): self
-    {
-        if (!$this->style->contains($style)) {
-            $this->style[] = $style;
-        }
-
-        return $this;
-    }
-
-    public function removeStyle(Style $style): self
-    {
-        if ($this->style->contains($style)) {
-            $this->style->removeElement($style);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Groupe[]
-     */
-    public function getGroupes(): Collection
-    {
-        return $this->groupes;
-    }
-
-    public function addGroupe(Groupe $groupe): self
-    {
-        if (!$this->groupes->contains($groupe)) {
-            $this->groupes[] = $groupe;
-            $groupe->addMembre($this);
-        }
-
-        return $this;
-    }
-
-    public function removeGroupe(Groupe $groupe): self
-    {
-        if ($this->groupes->contains($groupe)) {
-            $this->groupes->removeElement($groupe);
-            $groupe->removeMembre($this);
-        }
-
-        return $this;
-    }
-
-    public function getCity(): ?string
-    {
-        return $this->city;
-    }
-
-    public function setCity(?string $city): self
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    public function getZipcode(): ?int
-    {
-        return $this->zipcode;
-    }
-
-    public function setZipcode(?int $zipcode): self
-    {
-        $this->zipcode = $zipcode;
 
         return $this;
     }
