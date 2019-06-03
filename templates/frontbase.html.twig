@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="reply-to" content="contact@bandtogether.fr">
-    <meta name="description" content=" Ouais ouais les ptits bigoudens Band together c'est trop cool !">
+    <meta name="description" content="Trouvez en quelques clics des musiciens autour de vous pour jouer ensemble !">
 
     <title>{% block title %}Band Together{% endblock %}</title>
 
@@ -20,7 +20,36 @@
 
 <body id="top">
 
-{% block body %}{% endblock %}
+        <header id="header">
+
+                {#<div class="logo_container">#}
+                {#<img src="{{ asset('assets/img/logo.png') }}" alt="logo band together" class="logo">#}
+                {#</div>#}
+        
+                <nav>
+                    <ul>
+                        <li><a href="{{ path('home')}}#top">Accueil</a></li>
+                        <li><a href="{{ path('home')}}#about">A propos</a></li>
+                        <li><a href="{{ path('home')}}#services">Services</a></li>
+                        <li><a href="{{ path('home')}}#news">News</a></li>
+                        <li><a href="{{ path('home')}}#contact">Contact</a></li>
+                        {% if (is_granted('ROLE_ADMIN') == true) %}
+                            <li><a href="{{ path('dashboard') }}">Admin</a></li>
+                        {% endif %}
+                        {% if  (is_granted('ROLE_USER') == false) and (is_granted('ROLE_ADMIN') == false)  %}
+                            <li><a href="{{ path('app_login') }}">Connexion</a></li>
+                            <li><a href="{{ path('register') }}">Inscription</a></li>
+                        {% else %}
+                            <li><a href="{{ path('profil') }}">Profil</a></li>
+                            <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+        
+            </header>
+
+{% block body %}
+{% endblock %}
 
 
 

@@ -6,33 +6,6 @@
 
 {% block body %}
 
-    <header id="header">
-
-        {#<div class="logo_container">#}
-        {#<img src="{{ asset('assets/img/logo.png') }}" alt="logo band together" class="logo">#}
-        {#</div>#}
-
-        <nav>
-            <ul>
-                <li><a href="#top">Accueil</a></li>
-                <li><a href="#about">A propos</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#news">News</a></li>
-                <li><a href="#contact">Contact</a></li>
-                {% if (is_granted('ROLE_ADMIN') == true) %}
-                    <li><a href="{{ path('dashboard') }}">Admin</a></li>
-                {% endif %}
-                {% if  (is_granted('ROLE_USER') == false) and (is_granted('ROLE_ADMIN') == false)  %}
-                    <li><a href="{{ path('app_login') }}">Connexion</a></li>
-                    <li><a href="{{ path('register') }}">Inscription</a></li>
-                {% else %}
-                    <li><a href="{{ path('profil') }}">Profil</a></li>
-                    <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-
-    </header>
     <section class="home px_bg1">
 
         <h1>Band Together</h1>
