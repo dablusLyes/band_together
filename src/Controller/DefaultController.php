@@ -17,33 +17,4 @@ class DefaultController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/news", name="news")
-     */
-    public function news()
-    {
-        return $this->render('default/news.html.twig', [
-
-        ]);
-    }
-
-    /**
-     * @Route("/contact", name="contact")
-     */
-    public function contact()
-    {
-        return $this->render('default/contact.html.twig', [
-
-        ]);
-    }
-
-    /**
-     * @Route("/apropos", name="about")
-     */
-    public function about()
-    {
-        return $this->render('default/about.html.twig', [
-
-        ]);
-    }
 }

@@ -9,7 +9,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"email"}, message="L'email est déjà utilisé, merci d'en choisir un autre")
+ * @UniqueEntity(fields={"email"}, message="L'adresse email est déjà utilisée")
+ * @UniqueEntity(fields={"username"}, message="Ce nom d'utilisateur est déjà utilisé")
  */
 class User implements UserInterface
 {
@@ -80,31 +81,16 @@ class User implements UserInterface
     private $updated_at;
 
     /**
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $name;
-
-    /**
-     * @ORM\Column(type="string", length=100, nullable=true)
-     */
-    private $surname;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     * @Assert\Length(max=3000)
-     */
-    private $description;
-
-    /**
-     * @ORM\Column(type="string", length=100, nullable=true)
-     */
-    private $city;
+    private $instrument;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $zipcode;
+    private $departement;
 
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -231,39 +217,30 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getName(): ?string
+    public function getInstrument(): ?string
     {
-        return $this->name;
+        return $this->instrument;
     }
 
-    public function setName(?string $name): self
+    public function setInstrument(?string $instrument): self
     {
-        $this->name = $name;
+        $this->instrument = $instrument;
 
         return $this;
     }
 
-    public function getSurname(): ?string
+
+    public function getDepartement(): ?int
     {
-        return $this->surname;
+        return $this->departement;
     }
 
-    public function setSurname(?string $surname): self
+    public function setDepartement(?int $departement): self
     {
-        $this->surname = $surname;
+        $this->departement = $departement;
 
         return $this;
     }
 
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
 
-    public function setDescription(?string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
 }

@@ -26,6 +26,17 @@
                 <h1> Mon Profil</h1>
 
                 <p>Il vous suffit ici de renseigner les informations qui vous correspondent pour trouver ensuite dans l'onglet <a href="#search">recherche</a> des musiciens avec qui entrer en contact</p>
+
+
+                {{ form_start(profileForm) }}
+                    
+                    {{ form_row(profileForm.username, { 'label': 'Nom d\'utilisateur' }) }}
+                    {{ form_row(profileForm.email, { 'label': 'Adresse email' }) }}
+                    {{ form_row(profileForm.departement, { 'label': 'Département' }}
+                    {{ form_row(profileForm.instrument, { 'label': 'Instrument' }) }}
+
+                <input type="submit" value="Valider">
+                {{ form_end(profileForm) }}
                 
 
             </section>
