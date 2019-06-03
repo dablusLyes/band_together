@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -90,7 +92,17 @@ class User implements UserInterface
      */
     private $departement;
 
-    
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\UsersInstruments", mappedBy="User")
+     */
+    private $usersInstruments;
+
+    public function __construct()
+    {
+        $this->usersInstruments = new ArrayCollection();
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -242,5 +254,34 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @return Collection|UsersInstruments[]
+     */
+    public function getUsersInstruments(): Collection
+    {
+        return $this->usersInstruments;
+    }
 
+    public function addUsersInstrument(UsersInstruments $usersInstrument): self
+    {
+        if (!$this->usersInstruments->contains($usersInstrument)) {
+            $this->usersInstruments[] = $usersInstrument;
+            $usersInstrument->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUsersInstrument(UsersInstruments $usersInstrument): self
+    {
+        if ($this->usersInstruments->contains($usersInstrument)) {
+            $this->usersInstruments->removeElement($usersInstrument);
+            // set the owning side to null (unless already changed)
+            if ($usersInstrument->getUser() === $this) {
+                $usersInstrument->setUser(null);
+            }
+        }
+
+        return $this;
+    }
 }

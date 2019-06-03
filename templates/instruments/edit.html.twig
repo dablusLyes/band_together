@@ -1,0 +1,10 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Edit Instruments{% endblock %}
+
+{% block body %}
+    <h1>Edit Instruments</h1>
+
+    {{ include('instruments/_form.html.twig', {'button_label': 'Update'}) }}
+
+{% endblock %}
