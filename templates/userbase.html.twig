@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="reply-to" content="contact@bandtogether.fr">
+    <meta name="description" content="Trouvez en quelques clics des musiciens autour de vous pour jouer ensemble !">
+
+    <title>{% block title %}Band Together{% endblock %}</title>
+
+    {% block stylesheets %}
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="assets/css/user.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    {% endblock %}
+
+</head>
+
+<body id="top">
+
+    <div class="main_container">
+        <header>
+            <div class="img_container"><img id="user_pic" src="assets/img/default_avatar.png"
+                    alt="photo de profil de l'utilisateur"></div>
+            <h3 id="username">{{ user.username }}</h3>
+            <nav>
+                <ul>
+                    <li><a href="{{ path('profile') }}">Profil</a></li>
+                    <li><a href="{{ path('search') }}">Recherche</a></li>
+                </ul>
+            </nav>
+            <div class="switch_menu"></div>
+            <!-- <a id="contact_link" href="{{ path('home') }}#contact">Contact</a> -->
+            <a id="logout" href="{{ path('app_logout') }}">Déconnexion</a>
+        </header>
+
+        <div class="section_container">
+
+        {% block body %}{% endblock %}
+
+
+
+        {% block javascripts %}
+            <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+            <script src="{{ asset('assets/js/main.js') }}"></script>
+        {% endblock %}
+
+</body>
+
+</html>

@@ -1,26 +1,7 @@
-{% extends 'frontbase.html.twig' %}
-
-{% block stylesheets %}
-    <link rel="stylesheet" href="assets/css/profil.css">
-{% endblock %}
+{% extends 'userbase.html.twig' %}
 
 {% block body %}
-    <div class="main_container">
-        <header>
-            <div class="img_container"><img id="user_pic" src="assets/img/default_avatar.png" alt="photo de profil de l'utilisateur"></div>
-            <h3 id="username">{{ user.username }}</h3>
-            <nav>
-                <ul>
-                    <li><a href="#profil">Profil</a></li>
-                    <li><a href="#band">Groupe</a></li>
-                    <li><a href="#search">Rechercher</a></li>
-                </ul>
-            </nav>
-            <div class="switch_menu"></div>
-            <a id="logout" href="{{ path('app_logout') }}">Déconnexion</a>
-        </header>
-
-        <div class="section_container">
+  
             <section id="profil">
 
                 <h1> Mon Profil</h1>
@@ -41,22 +22,7 @@
 
             </section>
 
-            <section id="band">
-
-                <h1>Groupe</h1>
-
-                <p>ici vous pouvez créer votre groupe et le gérer, invitez ses membres à le rejoindre, signalez que vous recherchez des musiciens, etc... </p>
-            </section>
-
-            <section id="search">
-
-                <h1>Rechercher</h1>
-                <p>Ici vous pouvez voir les profils autour de vous ou choisir vos propre critères de recherche. Trouvez ceux qui vous interessent, il ne vous reste plus qu'a les contacter !</p>
-
-            </section>
         </div>
     </div>
 
-
-    {# {{ form(form) }} #}
 {% endblock %}

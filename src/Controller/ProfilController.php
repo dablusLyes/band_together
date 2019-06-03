@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProfilController extends AbstractController
 {
     /**
-     * @Route("/profil", name="profil", methods={"GET","POST"})
+     * @Route("/profil", name="profile", methods={"GET","POST"})
      */
     public function index( Request $request )
     {
@@ -23,7 +23,6 @@ class ProfilController extends AbstractController
 
         $form = $this->createForm(ProfileType::class, $user);
         $form->handleRequest($request);
-        // $form->handleRequest($request);
 
         return $this->render('profil/index.html.twig', [
             'user' => $user,
