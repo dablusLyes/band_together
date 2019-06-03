@@ -1,17 +1,30 @@
 {% extends 'frontbase.html.twig' %}
 
-{% block title %}Mot de passe oublié.{% endblock %}
+{% block title %}
+    Mot de passe oublié
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+{% endblock %}
 
 {% block body %}
-    <form method="post">
 
-        <h1 class="h3 mb-3 font-weight-normal">Mot de passe de oublié</h1>
-        <label for="inputEmail" class="sr-only">Email</label>
-        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+    <section class="forget_password">
+        <form method="post">
 
-        <button class="btn btn-lg btn-primary" type="submit">
-            Recevoir un mail
-        </button>
+            <h1 class="h3 mb-3 font-weight-normal">Mot de passe de oublié</h1>
+            <label for="inputEmail" class="sr-only">Email</label>
+            <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
 
-    </form>
+            <button class="btn btn-lg btn-primary" type="submit">Recevoir un mail</button>
+            {% for message in app.flashes('danger') %}
+            <div id="flash">
+                <p>{{ message }}</p>
+            </div>
+            {% endfor %}
+        </form>
+
+    </section>
+
 {% endblock %}

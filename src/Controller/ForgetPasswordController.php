@@ -40,31 +40,34 @@ class ForgetPasswordController extends AbstractController
             /* @var $user User */
 
             if ($user === null) {
-                $this->addFlash('danger', 'Email Inconnu');
-                return $this->redirectToRoute('home');
+                $this->addFlash('danger', 'Utilisateur inconnu, merci de vérifier l\'email');
+                // return $this->redirectToRoute('home');
+            } else {
+
+                $token = $user->getToken();
+
+                try{
+                    $entityManager->flush();
+                } catch (\Exception $e) {
+                    $this->addFlash('warning', $e->getMessage());
+                    return $this->redirectToRoute('home');
+                }
+    
+                $url = $this->generateUrl('reset_password', array('token' => $token, 'mail' => $email), UrlGeneratorInterface::ABSOLUTE_URL);
+    
+                $message = (new \Swift_Message('Forgot Password'))
+                    ->setFrom('g.ponty@dev-web.io')
+                    ->setTo($user->getEmail())
+                    ->setBody(
+                        'Bonjour voici le lien pour remettre a zero votre mot de passe : <a href="' . $url . '">Remettre a zero son mot de passe</a>',
+                        'text/html'
+                    );
+    
+                $mailer->send($message);
+    
+                $this->addFlash('notice', 'Mail envoyé');
             }
-            $token = $user->getToken();
 
-            try{
-                $entityManager->flush();
-            } catch (\Exception $e) {
-                $this->addFlash('warning', $e->getMessage());
-                return $this->redirectToRoute('home');
-            }
-
-            $url = $this->generateUrl('reset_password', array('token' => $token, 'mail' => $email), UrlGeneratorInterface::ABSOLUTE_URL);
-
-            $message = (new \Swift_Message('Forgot Password'))
-                ->setFrom('g.ponty@dev-web.io')
-                ->setTo($user->getEmail())
-                ->setBody(
-                    'Bonjour voici le lien pour remettre a zero votre mot de passe : <a href="' . $url . '">Remettre a zero son mot de passe</a>',
-                    'text/html'
-                );
-
-            $mailer->send($message);
-
-            $this->addFlash('notice', 'Mail envoyé');
 
             //return $this->redirectToRoute('home');
         }
