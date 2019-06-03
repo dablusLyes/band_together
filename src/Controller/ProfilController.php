@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProfilController extends AbstractController
 {
     /**
-     * @Route("admin/profil", name="profile", methods={"GET","POST"})
+     * @Route("/profil", name="profile", methods={"GET","POST"})
      */
     public function index( Request $request )
     {
