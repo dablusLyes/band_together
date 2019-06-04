@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use phpDocumentor\Reflection\Types\Null_;
 
 /**
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
@@ -38,6 +39,22 @@ class UserRepository extends ServiceEntityRepository
 
         return $query->getResult();
     }
+
+    /**
+    * @return User[] Returns an array of the 10 last users with a departement set in their profile for the homepage
+    */
+
+    public function findByLastUserWithDepartement()
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.departement IS NOT NULL')
+            ->orderBy('u.created_at', 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
 
     // /**
     //  * @return User[] Returns an array of User objects

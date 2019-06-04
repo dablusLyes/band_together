@@ -9,44 +9,39 @@
 {% block body %}
 
     <section class="home px_bg1">
-
+        <a href="{{ path('home') }}#about"><h2 class="first">La musique se partage...</h2></a>
         <h1>Band Together</h1>
+        <a href="{{ path('home') }}#news"><h2 class="second">...Ne jouez plus seul</h2></a>
         <a href="#about"><i class="fas fa-angle-double-down"></i></a>
     </section>
 
     <section id="about" class="about">
         <div class="wrap">
-            <p class="section_text">
-                vous êtes musiciens ?  marre de jouer en solo ?  vous cherchez un groupe ? ou simplement une meilleur visibilité ? avec Band-Together vous êtes a la bonne adresse.enregistrez-vous entrez vos instruments et votre niveau  puis vous trouverez facilement les musiciens de votre secteur prêt à jouer avec vous il n’y a plus qua les contacter, enjoy U+1F642</p>
-        </div>
-        <a href="#services"><i class="fas fa-angle-double-down"></i></a>
-    </section>
+            <p class="first">Vous en avez marre de jouer seul ? Vous avez envie de partager votre passion de la musique ?</p>
+            <p class="second">Avec Band Together mettez au placard votre pédale de loop et vos 18 instruments ! En quelques clics simplement, inscrivez vous pour trouver des musiciens près de chez vous et organisez des boeufs d'enfer !</p>
+            <p class="third">De l'entrainement de fond du garage, à la répétition pro, que vous soyez débutant ou que la musique soit votre métier, trouvez les partenaires qui vous correspondent, pour monter un groupe ou simplement vous amusez occasionnellement...</p>
+            <a class="registration" href="{{ path('register') }}">Je m'inscris !</a>
 
-    <div class="px_bg2"></div>
-
-    <section id="services" class="services">
-        <div class="wrap">
-                <p class="section_text">simple et facile, enregistrez-vous sur band-together, entrez vos instruments votre style de musique puis poster une annonce qui sera visible par les membres de la  communauté.
-                grâce au sytème d’annonce vous pouvez postez une annonce visible par la communauté de band-together  pour trouver un groupe ou un musicien pour rejoindre votre groupe vous n’aurez plus qu’a les contacter</p>
         </div>
         <a href="#news"><i class="fas fa-angle-double-down"></i></a>
     </section>
+
     <div class="px_bg4"></div>
     <section class="news" id="news">
         <div class="wrap">
-                <p class="section_text">Les pélicans sont de grands oiseaux (de 105 à 350 cm) aquatiques piscivores caractérisés par un grand bec muni d'une volumineuse poche extensible.
+                <p class="first">Restez connecté, ne ratez pas les nouveaux membres de votre région !</p>
+                <h3>Derniers musiciens inscrits :</h3>
 
-                Cosmopolites à l'exception des hautes latitudes, les pélicans fréquentent les étendues d'eau libre, à la fois sur les côtes et à l'intérieur des terres, depuis les régions tropicales jusqu'aux zones tempérées chaudes.
-
-
-                Pélican nageant au large de Cuba
-
-                Un pélican dans le « Bangabandhu Sheikh Mujib Safari Park » au Bangladesh. Mai 2018.
-                Position systématique
-                Le placement traditionnel des pélicans dans l'ordre des Pelecaniformes a été remis en question par la classification de Sibley-Ahlquist, qui les rangeait dans l'ordre élargi des ciconiidaes.
-
-                Le Bec-en-sabot du Nil (Balaeniceps rex) a longtemps été classé dans cette famille, mais des études génétiques ont montré qu'il devait être placé dans une famille séparée, celle des Balaenicipitidae.</p>
+                <div class="last_users_container">
+                    {% for lastUser in lastUsers %}
+                        <div class="last_users_item">
+                            <p>{{ lastUser.username }}</p>
+                            <p>{{ lastUser.departement.nom }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
         </div>
+        
         <a href="#contact"><i class="fas fa-angle-double-down"></i></a>
     </section>
 
