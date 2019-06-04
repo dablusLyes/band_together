@@ -101,7 +101,7 @@ section.home h1 {
     left: 50%;
     transform: translate(-50%,-50%); }
 
-#fdp, #fdpa, section.home i{
+section.home i{
     font-size: 2em;
     color: white;
     position: absolute;
@@ -260,11 +260,16 @@ footer img {
     text-align: center;
     display: block; }
 
-.footer_item1 a:hover, .footer_item3 a:hover{ text-decoration: underline; }
+.footer_item1 a:hover,
+.footer_item3 a:hover { 
+    text-decoration: underline;
+ }
 
 /*============= * LOGIN & REGISTER * ===============*/
 
-section.login, section.register {
+section.login, 
+section.register, 
+section.forget_password{
     color: white;
     background: url("../img/homebackground.jpg") no-repeat fixed;
     background-size: cover;
@@ -272,43 +277,67 @@ section.login, section.register {
     padding-top: 20vh;
 }
 
-section.login form, section.register form{
+section.login form,
+section.register form,
+section.forget_password form
+{
     background-color: rgba(0,0,0,.1);
     padding: 20px 0;
 }
 
-section.login h1, section.register h1 {
+section.login h1,
+section.register h1,
+section.forget_password h1
+{
     font-family: Bungee;
     text-align: center;
     font-size: 3.5vh;
     color: #FFCC46;
-    /*text-transform: uppercase;*/
-    /*background-color: rgba(0,0,0,.1);*/
+    /* text-transform: uppercase; */
+    /* background-color: rgba(0,0,0,.1); */
     padding: 1vh 0;
     margin-bottom: 5vh;
 }
 
-section.login input, section.register input {
+section.login input,
+section.register input,
+section.forget_password input,
+section.forget_password input{
     display: block;
     margin: 5px auto 3vh;
     padding: 5px;
     text-align: center;
     width: 30%;
 }
-section.login input[type=submit], section.register input[type=submit] {
+
+section.forget_password button{
+    margin: 5px auto 3vh;
+    padding: 5px;
+    text-align: center;
+    display: block;
+}
+
+
+section.login input[type=submit],
+section.register input[type=submit],
+section.forget_password button{
     width: 15%;
-    background-color: rgba(25,25,25,.5);
+    background-color: rgba(25, 25, 25, .5);
     color: white;
     padding: 10px;
     border: solid 1px white;
 }
 
-section.login input[type=submit]:hover, section.register input[type=submit]:hover{
+section.login input[type=submit]:hover,
+section.register input[type=submit]:hover,
+section.forget_password button:hover {
     color: #FFCC46;
     border-color: #FFCC46;
 }
 
-section.login label, section.register label {
+section.login label,
+section.register label,
+section.forget_password label {
     display: block;
     font-size: 1.3em;
     text-align: center;
@@ -332,4 +361,20 @@ section.login input[type=checkbox]{
 section.login label.checkbox {
     display: inline;
     color: white;
+}
+
+section.login a{
+    color: white;
+    display: block;
+    text-align: center;
+}
+
+section.login a:hover{
+    color: #FCBB26;
+}
+
+div#flash{
+    display: block;
+    text-align: center;
+    color: red;
 }

@@ -28,11 +28,12 @@
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
                 <input type="submit" value="Connexion">
+                <a class="forget-password" href="{{ path('forget_password') }}">Mot de passe oublié</a>
 
                 <input type="checkbox" name="_remember_me">
                 <label class="checkbox">Se souvenir de moi</label>
 
-                <a class="forget-password" href="{{ path('forget_password') }}">Mot de passe oublié</a>
+
 
             </form>
         </div>
