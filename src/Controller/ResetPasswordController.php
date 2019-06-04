@@ -38,7 +38,7 @@ class ResetPasswordController extends AbstractController
        }
 
          if ($request->isMethod('POST')) {
-             $user->setToken($user->generateToken());
+             $user->setToken();
              $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('password')));
              $entityManager->flush();
              $this->addFlash('notice', 'Mot de passe mis à jour');

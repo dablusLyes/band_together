@@ -26,7 +26,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\NotBlank(message = "Merci de renseigner une adresse email")
-     * @Assert\Email(message="Veuillez renseigner un email valide")
+     * @Assert\Email(message="Veuillez renseigner un email valide",groups={"registration"})
      */
     private $email;
 
@@ -39,12 +39,12 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(message = "Merci de choisir un mot de passe")
+     * @Assert\NotBlank(message = "Merci de choisir un mot de passe", groups={"registration"})
      * @Assert\EqualTo(propertyPath="passwordConfirm", message="Les mots de passe ne correspondent pas")
      * @Assert\Length(
      *      min = 8,
      *      max = 30,
-     *      minMessage = " Le mot de passe doit faire au moins {{ limit }} caractères",
+     *      minMessage = "Le mot de passe doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Le mot de passe ne doit pas faire plus de {{ limit }} caractères"
      * )
      */
@@ -62,8 +62,9 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Assert\NotBlank(message="Merci de choisir un nom d'utilisateur")
+     * @Assert\NotBlank(message="Merci de choisir un nom d'utilisateur",groups={"registration","Profil"})
      * @Assert\Length(
+     *      groups={"registration","Profil"},
      *      min = 4,
      *      max = 30,
      *      minMessage = "Le nom d'utilisateur doit faire au moins {{ limit }} caractères",
@@ -93,13 +94,19 @@ class User implements UserInterface
     private $departement;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\UsersInstruments", mappedBy="User")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Instruments", inversedBy="users")
      */
-    private $usersInstruments;
+    private $instruments;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Departements", mappedBy="users")
+     */
+    private $departements;
 
     public function __construct()
     {
-        $this->usersInstruments = new ArrayCollection();
+        $this->instruments = new ArrayCollection();
+        $this->departements = new ArrayCollection();
     }
 
 
@@ -255,33 +262,57 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|UsersInstruments[]
+     * @return Collection|Instruments[]
      */
-    public function getUsersInstruments(): Collection
+    public function getInstruments(): Collection
     {
-        return $this->usersInstruments;
+        return $this->instruments;
     }
 
-    public function addUsersInstrument(UsersInstruments $usersInstrument): self
+    public function addInstrument(Instruments $instrument): self
     {
-        if (!$this->usersInstruments->contains($usersInstrument)) {
-            $this->usersInstruments[] = $usersInstrument;
-            $usersInstrument->setUser($this);
+        if (!$this->instruments->contains($instrument)) {
+            $this->instruments[] = $instrument;
         }
 
         return $this;
     }
 
-    public function removeUsersInstrument(UsersInstruments $usersInstrument): self
+    public function removeInstrument(Instruments $instrument): self
     {
-        if ($this->usersInstruments->contains($usersInstrument)) {
-            $this->usersInstruments->removeElement($usersInstrument);
-            // set the owning side to null (unless already changed)
-            if ($usersInstrument->getUser() === $this) {
-                $usersInstrument->setUser(null);
-            }
+        if ($this->instruments->contains($instrument)) {
+            $this->instruments->removeElement($instrument);
         }
 
         return $this;
     }
+
+    /**
+     * @return Collection|Departements[]
+     */
+    public function getDepartements(): Collection
+    {
+        return $this->departements;
+    }
+
+    public function addDepartement(Departements $departement): self
+    {
+        if (!$this->departements->contains($departement)) {
+            $this->departements[] = $departement;
+            $departement->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDepartement(Departements $departement): self
+    {
+        if ($this->departements->contains($departement)) {
+            $this->departements->removeElement($departement);
+            $departement->removeUser($this);
+        }
+
+        return $this;
+    }
+
 }

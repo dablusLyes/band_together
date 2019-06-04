@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\InstrumentsRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\DepartementsRepository")
  */
-class Instruments
+class Departements
 {
     /**
      * @ORM\Id()
@@ -24,7 +24,7 @@ class Instruments
     private $nom;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="instruments")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="departements")
      */
     private $users;
 
@@ -32,7 +32,6 @@ class Instruments
     {
         $this->users = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
@@ -63,7 +62,6 @@ class Instruments
     {
         if (!$this->users->contains($user)) {
             $this->users[] = $user;
-            $user->addInstrument($this);
         }
 
         return $this;
@@ -73,11 +71,8 @@ class Instruments
     {
         if ($this->users->contains($user)) {
             $this->users->removeElement($user);
-            $user->removeInstrument($this);
         }
 
         return $this;
     }
-
-
 }

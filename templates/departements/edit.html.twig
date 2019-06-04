@@ -1,0 +1,10 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Edit Departements{% endblock %}
+
+{% block body %}
+    <h1>Edit Departements</h1>
+
+    {{ include('departements/_form.html.twig', {'button_label': 'Update'}) }}
+
+{% endblock %}

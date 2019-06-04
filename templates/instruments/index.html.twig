@@ -3,31 +3,40 @@
 {% block title %}Instruments index{% endblock %}
 
 {% block body %}
-    <h1>Instruments <a href="{{ path('instruments_new') }}">Ajouter</a></h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Edition</th>
-                <th>Supression</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for instrument in instruments %}
-            <tr>
-                <td>{{ instrument.id }}</td>
-                <td>{{ instrument.nom }}</td>
-                <td><a class="btn btn-info" href="{{ path('instruments_edit', {'id': instruments.id}) }}">edit</a></td>
-                <td>{{ include('instruments/_delete_form.html.twig') }}</td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div id="content-wrapper">
+      <div class="container-fluid">
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>Instruments <a href="{{ path('instruments_new') }}">Ajouter</a></div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                          <th>Id</th>
+                          <th>Nom</th>
+                          <th>Edition</th>
+                          <th>Supression</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  {% for instrument in instruments %}
+                      <tr>
+                          <td>{{ instrument.id }}</td>
+                          <td>{{ instrument.nom }}</td>
+                          <td><a class="btn btn-info" href="{{ path('instruments_edit', {'id': instrument.id}) }}">edit</a></td>
+                          <td>{{ include('instruments/_delete_form.html.twig') }}</td>
+                      </tr>
+                  {% else %}
+                      <tr>
+                          <td colspan="3">no records found</td>
+                      </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
 
 {% endblock %}
