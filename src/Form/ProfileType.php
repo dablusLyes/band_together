@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Entity\Instruments;
 use App\Entity\Departements;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -26,13 +27,13 @@ class ProfileType extends AbstractType
                   'multiple' => true,
                   'expanded' => true,
               ])
-              ->add('departement', EntityType::class, [
+            ->add('departement', EntityType::class, [
                 'class' => Departements::class,
                 'choice_label' => 'nom',
                 'multiple' => false,
-                'expanded' => true,
+                'expanded' => false,
               ])
-
+            ->add('avatar', FileType::class, ['label' => 'Avatar (png, jpg, gif)'])
         ;
     }
 

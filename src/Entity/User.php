@@ -105,6 +105,12 @@ class User implements UserInterface
      */
     private $friendWithMe;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File(mimeTypes={ "image/png", "image/jpg", "image/jpeg", "image/gif" },groups={"Profil"})
+     */
+    private $avatar;
+
     public function __construct()
     {
         $this->instruments = new ArrayCollection();
@@ -333,6 +339,18 @@ class User implements UserInterface
             $this->friendWithMe->removeElement($friendWithMe);
             $friendWithMe->removeFriend($this);
         }
+
+        return $this;
+    }
+
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(?string $avatar): self
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }
