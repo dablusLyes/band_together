@@ -83,15 +83,6 @@ class User implements UserInterface
      */
     private $updated_at;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $instrument;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $departement;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Instruments", inversedBy="users")
@@ -99,9 +90,10 @@ class User implements UserInterface
     private $instruments;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Departements", mappedBy="users")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Departements", inversedBy="users")
      */
-    private $departements;
+    private $departement;
+
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="friendWithMe")
@@ -119,6 +111,7 @@ class User implements UserInterface
         $this->departements = new ArrayCollection();
         $this->friends = new ArrayCollection();
         $this->friendWithMe = new ArrayCollection();
+
     }
 
 
@@ -248,30 +241,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getInstrument(): ?string
-    {
-        return $this->instrument;
-    }
 
-    public function setInstrument(?string $instrument): self
-    {
-        $this->instrument = $instrument;
-
-        return $this;
-    }
-
-
-    public function getDepartement(): ?int
-    {
-        return $this->departement;
-    }
-
-    public function setDepartement(?int $departement): self
-    {
-        $this->departement = $departement;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Instruments[]
@@ -299,33 +269,19 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Departements[]
-     */
-    public function getDepartements(): Collection
+    public function getDepartement(): ?Departements
     {
-        return $this->departements;
+        return $this->departement;
     }
 
-    public function addDepartement(Departements $departement): self
+    public function setDepartement(?Departements $departement): self
     {
-        if (!$this->departements->contains($departement)) {
-            $this->departements[] = $departement;
-            $departement->addUser($this);
-        }
+        $this->departement = $departement;
 
         return $this;
     }
 
-    public function removeDepartement(Departements $departement): self
-    {
-        if ($this->departements->contains($departement)) {
-            $this->departements->removeElement($departement);
-            $departement->removeUser($this);
-        }
 
-        return $this;
-    }
 
     /**
      * @return Collection|self[]

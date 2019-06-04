@@ -24,9 +24,10 @@ class Departements
     private $nom;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="departements")
+     * @ORM\OneToMany(targetEntity="App\Entity\User", mappedBy="departement")
      */
     private $users;
+
 
     public function __construct()
     {
@@ -62,6 +63,7 @@ class Departements
     {
         if (!$this->users->contains($user)) {
             $this->users[] = $user;
+            $user->setDepartement($this);
         }
 
         return $this;
@@ -71,8 +73,14 @@ class Departements
     {
         if ($this->users->contains($user)) {
             $this->users->removeElement($user);
+            // set the owning side to null (unless already changed)
+            if ($user->getDepartement() === $this) {
+                $user->setDepartement(null);
+            }
         }
 
         return $this;
     }
+
+    
 }
