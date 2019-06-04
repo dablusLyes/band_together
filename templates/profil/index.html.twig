@@ -12,8 +12,8 @@
                 {{ form_start(profileForm, {'attr': {'novalidate': 'novalidate'}}) }}
 
                     {{ form_row(profileForm.username, { 'label': 'Nom d\'utilisateur' }) }}
-                    {# form_row(profileForm.email, { 'label': 'Adresse email' }) ""}
-                    {# form_row(profileForm.departement, { 'label': 'Département'}) #}
+                    {# form_row(profileForm.email, { 'label': 'Adresse email' }) "" #}
+                    {{ form_row(profileForm.departement, { 'label': 'Département'}) }}
                     {{ form_row(profileForm.instruments, { 'label': 'Instrument' }) }}
 
                 <input type="submit" value="Valider">

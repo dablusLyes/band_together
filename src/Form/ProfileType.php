@@ -26,9 +26,11 @@ class ProfileType extends AbstractType
                   'multiple' => true,
                   'expanded' => true,
               ])
-              ->add('departements', EntityType::class, [
+              ->add('departement', EntityType::class, [
                 'class' => Departements::class,
                 'choice_label' => 'nom',
+                'multiple' => false,
+                'expanded' => true,
               ])
 
         ;
