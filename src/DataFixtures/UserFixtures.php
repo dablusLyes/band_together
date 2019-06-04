@@ -35,7 +35,7 @@ class UserFixtures extends Fixture
 
           $names = ['michel', 'tartenpion', 'antoine', 'yoda', 'obiwan', 'frederic', 'faillot', 'macron','jeanphil', 'tartine'];
 
-          for ($i=0; $i < 100; $i++) {
+          for ($i=0; $i < 20; $i++) {
             $name = $names[rand(0, count($names) - 1)].$i;
             $user = new User();
             $user->setUsername($name);

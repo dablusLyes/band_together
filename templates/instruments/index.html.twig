@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="card mb-3">
           <div class="card-header">
-            <i class="fas fa-table"></i>Instruments <a href="{{ path('instruments_new') }}">Ajouter</a></div>
+            <i class="fas fa-table"></i> Instruments <a href="{{ path('instruments_new') }}">Ajouter un instrument</a></div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -25,7 +25,7 @@
                       <tr>
                           <td>{{ instrument.id }}</td>
                           <td>{{ instrument.nom }}</td>
-                          <td><a class="btn btn-info" href="{{ path('instruments_edit', {'id': instrument.id}) }}">edit</a></td>
+                          <td><a class="btn btn-info" href="{{ path('instruments_edit', {'id': instrument.id}) }}">éditer</a></td>
                           <td>{{ include('instruments/_delete_form.html.twig') }}</td>
                       </tr>
                   {% else %}

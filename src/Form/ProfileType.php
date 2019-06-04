@@ -30,7 +30,7 @@ class ProfileType extends AbstractType
                 'class' => Departements::class,
                 'choice_label' => 'nom',
                 'multiple' => false,
-                'expanded' => true,
+                'expanded' => false,
               ])
 
         ;
