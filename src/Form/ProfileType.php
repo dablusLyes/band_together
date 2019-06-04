@@ -28,7 +28,7 @@ class ProfileType extends AbstractType
               ])
               ->add('departements', EntityType::class, [
                 'class' => Departements::class,
-                'choice_label' => 'departement',
+                'choice_label' => 'nom',
               ])
 
         ;
