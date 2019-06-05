@@ -6,7 +6,6 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Entity\User;
-use Proxies\__CG__\App\Entity\Departements;
 
 class UserFixtures extends Fixture
 {
@@ -49,11 +48,10 @@ class UserFixtures extends Fixture
           // $departement4->setNom('Haute-Normandie');
           // $manager->persist($departement4);
 
-          $names = ['michel', 'tartenpion', 'antoine', 'yoda', 'obiwan', 'frederic', 'faillot', 'macron','jeanphil', 'tartine'];
+          $names = ['Michael', 'Kurt', 'Antoine', 'Rémi', 'Valentin', 'Fred', 'Lyes', 'Jérémy','Jean', 'John', 'Paul', 'George', 'Ringo', 'Jacques', 'Lana', 'Daniel', 'Celine', 'Mylene', 'Camille', 'Chloé'];
 
           for ($i=0; $i < 20; $i++) {
-            $name = $names[rand(0, count($names) - 1)].$i;
-            // $dep = $departements[rand(0, count($departements) - 1)].$i;
+            $name = $names[$i];
             $user = new User();
             $user->setUsername($name);
             // $user->setDepartement($departement1);
