@@ -33,31 +33,30 @@ class UserFixtures extends Fixture
           $user_admin->setToken();
           $manager->persist($user_admin);
 
-          $departement1 = new Departements();
-          $departement1->setNom('Var');
-          $manager->persist($departement1);
+          // $departement1 = new Departements();
+          // $departement1->setNom('Var');
+          // $manager->persist($departement1);
 
-          $departement2 = new Departements();
-          $departement2->setNom('Vaucluse');
-          $manager->persist($departement2);
+          // $departement2 = new Departements();
+          // $departement2->setNom('Vaucluse');
+          // $manager->persist($departement2);
 
-          $departement3 = new Departements();
-          $departement3->setNom('Eure');
-          $manager->persist($departement3);
+          // $departement3 = new Departements();
+          // $departement3->setNom('Eure');
+          // $manager->persist($departement3);
 
-          $departement4 = new Departements();
-          $departement4->setNom('Haute-Normandie');
-          $manager->persist($departement4);
+          // $departement4 = new Departements();
+          // $departement4->setNom('Haute-Normandie');
+          // $manager->persist($departement4);
 
           $names = ['michel', 'tartenpion', 'antoine', 'yoda', 'obiwan', 'frederic', 'faillot', 'macron','jeanphil', 'tartine'];
-          // $departements = ['Var', 'Vaucluse', 'Eure', 'Haute-Normandie', 'Rhone-Alpes', 'Savoie', 'Ain', 'Ardèche', 'Creuse', 'Jura'];
 
           for ($i=0; $i < 20; $i++) {
             $name = $names[rand(0, count($names) - 1)].$i;
             // $dep = $departements[rand(0, count($departements) - 1)].$i;
             $user = new User();
             $user->setUsername($name);
-            $user->setDepartement($departement1);
+            // $user->setDepartement($departement1);
             $user->setEmail("$name@gmail.com");
             $user->setCreatedAt(new \Datetime);
 

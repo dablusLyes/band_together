@@ -20,8 +20,11 @@
                 {#<div class="logo_container">#}
                 {#<img src="{{ asset('assets/img/logo.png') }}" alt="logo band together" class="logo">#}
                 {#</div>#}
-        
-                <nav>
+                
+                <div id="collapse_menu_icon">
+                    <p id="trigger_collapse_menu">☰</p>
+                </div>
+                <nav id="collapse_menu">
                     <ul>
                         <li><a href="{{ path('home')}}#top">Accueil</a></li>
                         <li><a href="{{ path('home')}}#about">A propos</a></li>

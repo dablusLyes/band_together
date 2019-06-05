@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     // Select all links with hashes
     $('a[href*="#"]')
-    // Remove links that don't actually link to anything
+        // Remove links that don't actually link to anything
         .not('[href="#"]')
         .not('[href="#0"]')
         .click(function (event) {
@@ -25,7 +25,7 @@ $(document).ready(function () {
                     event.preventDefault();
                     $('html, body').animate({
                         scrollTop: target.offset().top
-                    },0, function () {
+                    }, 0, function () {
                         // // Callback after animation
                         // // Must change focus!
                         // var $target = $(target);
@@ -40,6 +40,24 @@ $(document).ready(function () {
                 }
             }
         });
+
+    //======================================================================================
+    //================================== Collapse Menu =====================================
+    //======================================================================================
+
+    // Makes the collapse menu working and toggle visible and hide on links click
+
+    let collapseMenu = $('#collapse_menu');
+    let trigger = $('#trigger_collapse_menu');
+    let links = $('#collapse_menu>ul>li>a');
+
+    trigger.on('click', function () {
+        collapseMenu.toggleClass('visible');
+    })
+
+    links.on('click', function () {
+        collapseMenu.toggleClass('visible');
+    })
 
 
 });
