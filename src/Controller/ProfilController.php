@@ -49,8 +49,8 @@ class ProfilController extends AbstractController
 
                   $this->getDoctrine()->getManager()->flush();
                   return $this->redirectToRoute('profile');
-              }
-            }
+               }
+            
 
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'Votre profil à bien été modifié !');
