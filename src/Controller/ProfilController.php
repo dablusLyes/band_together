@@ -52,6 +52,13 @@ class ProfilController extends AbstractController
               }
             }
 
+<<<<<<< HEAD
+=======
+            $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'Votre profil à bien été modifié !');
+            return $this->redirectToRoute('profile');
+        }
+>>>>>>> aec417ead4e577da9662ae490793b4cff26a0425
 
         return $this->render('profil/index.html.twig', [
             'user' => $user,
