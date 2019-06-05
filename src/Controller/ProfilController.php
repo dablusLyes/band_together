@@ -27,23 +27,23 @@ class ProfilController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
-            // //$file = $user->getAvatar();
-            // $file = $form['avatar']->getData();
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
 
-            // $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+            $file = $form['avatar']->getData();
 
-            // // Move the file to the directory where brochures are stored
-            // try {
-            //     $file->move(
-            //         $this->getParameter('user/avatar'),
-            //         $fileName
-            //     );
-            // } catch (FileException $e) {
-            //     // ... handle exception if something happens during file upload
-            // }
+            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
 
-            // $user->setAvatar($fileName);
+            // Move the file to the directory where brochures are stored
+            try {
+                $file->move(
+                    $this->getParameter('image'),
+                    $fileName
+                );
+            } catch (FileException $e) {
+                // ... handle exception if something happens during file upload
+            }
+
+            $user->setAvatar($fileName);
 
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'Votre profil à bien été modifié !');

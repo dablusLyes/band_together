@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\HttpFoundation\File\File;
 
 class ProfileType extends AbstractType
 {
@@ -33,7 +34,10 @@ class ProfileType extends AbstractType
                 'multiple' => false,
                 'expanded' => false,
               ])
-            ->add('avatar', FileType::class, ['label' => 'Avatar (png, jpg, gif)'])
+            ->add('avatar', FileType::class, [
+                'label' => 'Avatar (png, jpg, gif)',
+                'data_class' => null,
+              ])
         ;
     }
 
