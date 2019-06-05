@@ -46,6 +46,7 @@ class ProfilController extends AbstractController
             // $user->setAvatar($fileName);
 
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'Votre profil à bien été modifié !');
             return $this->redirectToRoute('profile');
         }
 

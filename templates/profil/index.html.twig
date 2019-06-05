@@ -2,22 +2,44 @@
 
 {% block body %}
 
-            <section id="profil">
+    <section id="profil">
 
-                <h1> Mon Profil</h1>
+        <h1>
+            Mon Profil</h1>
 
-                <p>Il vous suffit ici de renseigner les informations qui vous correspondent pour trouver ensuite dans l'onglet <a href="#search">recherche</a> des musiciens avec qui entrer en contact</p>
+        <p>N'oubliez pas de mettre à jour votre profil ! Ensuite il ne vous reste plus qu'a aller sur la page de
+            <a href="{{ path('search') }}">recherche</a>
+            pour trouver des musiciens près de chez vous !</p>
 
 
-                {{ form_start(profileForm, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_start(profileForm, {'attr': {'novalidate': 'novalidate'}}) }}
 
-                    {{ form_row(profileForm.username, { 'label': 'Nom d\'utilisateur' }) }}
-                    {# form_row(profileForm.email, { 'label': 'Adresse email' }) "" #}
-                    {{ form_row(profileForm.departement, { 'label': 'Département'}) }}
-                    {{ form_row(profileForm.instruments, { 'label': 'Instrument' }) }}
-                    {{ form_row(profileForm.avatar) }}
+        <div class="profile_infos">
+            <div class="profile_infos_item">
+                {{ form_row(profileForm.username, { 'label': 'Nom d\'utilisateur' }) }}
+                        </div>
+                        <div class="profile_infos_item">
+                            {{ form_row(profileForm.avatar, { 'label': 'Avatar' }) }}
+                        </div>
+                    </div>
 
-                <input type="submit" value="Valider">
+                    <hr>
+                    
+                    <div class="music_infos">
+                            <div class="music_infos_item">
+                                {{ form_row(profileForm.departement, { 'label': 'Département'}) }}
+                            </div>
+                        
+                            <div class="music_infos_item">
+                                {{ form_row(profileForm.instruments, { 'label': 'Instrument', 'label_attr' : { 'id' : 'select_label' } }) }}
+                            </div>
+                    </div>
+
+                    <input type="submit" value="Valider">
+                    {% for message in app.flashes('success') %}
+                        <p id="flash_message">{{ message }}</p>
+                    {% endfor %}
+
                 {{ form_end(profileForm) }}
 
 
