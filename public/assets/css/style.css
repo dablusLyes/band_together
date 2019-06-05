@@ -425,7 +425,7 @@ section.contact p.first{
 
 section.contact form{
     padding: 40px;
-    border: solid white 1px;
+    /* border: solid white 1px; */
     border-radius: 5px;
 }
 
