@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class SearchController extends AbstractController
 {
     /**
-     * @Route("/recherche", name="search", methods={"GET","POST"})
+     * @Route("/profil/recherche", name="search", methods={"GET","POST"})
      */
     public function index(  )
     {
