@@ -23,8 +23,15 @@
 
     <div class="main_container">
         <header>
-            <div class="img_container"><img id="user_pic" src="assets/img/default_avatar.png"
-                    alt="photo de profil de l'utilisateur"></div>
+            <div class="img_container">
+                  {% if user.avatar == '' %}
+                    <img id="user_pic" src="assets/img/default_avatar.png"
+                    alt="photo de profil de l'utilisateur">
+                  {% else %}
+                    <img id="user_pic" src="uploads/{{ user.avatar }}" alt="">
+                  {% endif %}
+
+            </div>
             <h3 id="username">{{ user.username }}</h3>
             <nav>
                 <ul>
