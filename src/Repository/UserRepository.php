@@ -49,7 +49,7 @@ class UserRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('u')
             ->where('u.departement IS NOT NULL')
             ->orderBy('u.created_at', 'DESC')
-            ->setMaxResults(10)
+            ->setMaxResults(12)
             ->getQuery()
             ->getResult()
         ;

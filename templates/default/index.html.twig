@@ -1,61 +1,123 @@
 {% extends 'frontbase.html.twig' %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link
+    rel="stylesheet" href="{{ asset('assets/css/dropdown.css') }}">
+    <!-- Font Awesome -->
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
 
     <section class="home px_bg1">
-        <a href="{{ path('home') }}#about"><h2 class="first">La musique se partage...</h2></a>
+        <a href="{{ path('home') }}#about">
+            <h2 class="first">La musique se partage...</h2>
+        </a>
         <h1>Band Together</h1>
-        <a href="{{ path('home') }}#news"><h2 class="second">...Ne jouez plus seul</h2></a>
-        <a href="#about"><i class="fas fa-angle-double-down"></i></a>
+        <a href="{{ path('home') }}#news">
+            <h2 class="second">...Ne jouez plus seul</h2>
+        </a>
+        <p class="scroll-down">
+            <a href="{{ path('home') }}#about" class="animate"></a>
+        </p>
+        {# <a href="#about"><i class="fas fa-angle-double-down"></i></a> #}
     </section>
 
-    <section id="about" class="about">
+    <section class="about" id="about">
         <div class="wrap">
             <p class="first">Vous en avez marre de jouer seul ? Vous avez envie de partager votre passion de la musique ?</p>
-            <p class="second">Avec Band Together mettez au placard votre pédale de loop et vos 18 instruments ! En quelques clics simplement, inscrivez vous pour trouver des musiciens près de chez vous et organisez des boeufs d'enfer !</p>
+            <p class="second">Avec Band Together rangez votre pédale de loop et vos 18 instruments ! En quelques clics simplement, inscrivez vous pour trouver des musiciens près de chez vous et organisez des boeufs d'enfer !</p>
             <p class="third">De l'entrainement de fond du garage, à la répétition pro, que vous soyez débutant ou que la musique soit votre métier, trouvez les partenaires qui vous correspondent, pour monter un groupe ou simplement vous amusez occasionnellement...</p>
             <a class="registration" href="{{ path('register') }}">Je m'inscris !</a>
+            <p class="scroll-down">
+                <a href="{{ path('home') }}#news" class="animate"></a>
+            </p>
 
         </div>
-        <a href="#news"><i class="fas fa-angle-double-down"></i></a>
+        {# <a href="#news"><i class="fas fa-angle-double-down"></i></a> #}
     </section>
 
     <div class="px_bg4"></div>
     <section class="news" id="news">
         <div class="wrap">
-                <p class="first">Restez connecté, ne ratez pas les nouveaux membres de votre région !</p>
-                <h3>Derniers musiciens inscrits :</h3>
+            <p class="first">Restez connecté, ne ratez pas les nouveaux membres de votre région !</p>
 
-                <div class="last_users_container">
-                    {% for lastUser in lastUsers %}
-                        <div class="last_users_item">
-                            <p>{{ lastUser.username }}</p>
-                            <p>{{ lastUser.departement.nom }}</p>
-                        </div>
-                    {% endfor %}
+            <div class="slideshow">
+                <div class="item1">
+                    <div class="last_users_container">
+                        {% for lastUser in lastUsers | slice(0,4) %}
+                            <div class="last_users_item">
+                                <p class="username">{{ lastUser.username }}</p>
+                                <div class="img_container">
+                                    <img src="{{ asset('assets/img/instruments/016-bass.png') }}" alt="bass_icon">
+                                </div>
+                                <p class="departement">{{ lastUser.departement.nom }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
+                <div class="item2">
+                    <div class="last_users_container">
+                        {% for lastUser in lastUsers | slice(4,4) %}
+                            <div class="last_users_item">
+                                <p class="username">{{ lastUser.username }}</p>
+                                <div class="img_container">
+                                    <img src="{{ asset('assets/img/instruments/049-drums.png') }}" alt="bass_icon">
+                                </div>
+                                <p class="departement">{{ lastUser.departement.nom }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="item3">
+                    <div class="last_users_container">
+                        {% for lastUser in lastUsers | slice(8,4) %}
+                            <div class="last_users_item">
+                                <p class="username">{{ lastUser.username }}</p>
+                                <div class="img_container">
+                                    <img src="{{ asset('assets/img/instruments/043-triangle.png') }}" alt="bass_icon">
+                                </div>
+                                <p class="departement">{{ lastUser.departement.nom }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <a href="#contact"><i class="fas fa-angle-double-down"></i></a>
+
+        <a class="login" href="{{ path('app_login') }}">Je me connecte !</a>
+
+        {# <a href="#contact"><i class="fas fa-angle-double-down"></i></a> #}
+        <p id="dark">
+            <a href="{{ path('home') }}#contact" class="animate"></a>
+        </p>
     </section>
 
     <div class="px_bg3"></div>
 
     <section class="contact" id="contact">
         <div class="wrap">
-            <p class="section_text">
-                La licorne, parfois nommée unicorne, est une créature légendaire à corne unique. Son origine, controversée, résulte de multiples influences, en particulier de descriptions d'animaux tels que le rhinocéros et l'antilope, issues de récits d'explorateurs. Les premières représentations attestées d'animaux unicornes remontent à la civilisation de l'Indus. Le récit sanskrit d'Ekasringa et les routes commerciales pourraient avoir joué un rôle dans leur diffusion vers le Proche-Orient.
+            <h2>Contact</h2>
+            <p class="first">Pour toutes vos questions, N'hésitez pas à nous écrire !</p>
 
-                Connue dans l'Occident chrétien depuis l'Antiquité grecque par des récits de voyageurs en Perse et en Inde, sous le nom de « monocéros », la licorne occidentale se distingue de ses consœurs asiatiques par son apparence, son symbolisme et son histoire. Sous l'influence du Physiologus, les bestiaires occidentaux et leurs miniatures la décrivent comme un animal sylvestre très féroce, symbole de pureté et de grâce, attiré par l'odeur de la virginité. Le récit de sa chasse, durant laquelle une jeune fille vierge aide les chasseurs à la capturer, se diffuse dans tout l'Occident chrétien ainsi qu'une partie du monde musulman. La représentation physique de la licorne occidentale se fixe
-                </p>
+            <form action="" method="POST">
+                <label for="name">Nom</label>
+                <input type="text" name="name" id="name" placeholder="Votre nom...">
+
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" placeholder="Votre Email">
+
+                <label for="message">Message</label>
+                <textarea name="message" id="message" placeholder="Votre message"></textarea>
+
+                <input type="submit" name="submitted" value="Envoyer">
+            </form>
         </div>
-        <a href="#footer"><i class="fas fa-angle-double-down"></i></a>
+        {# <a href="#footer"><i class="fas fa-angle-double-down"></i></a> #}
+        <p class="scroll-down">
+            <a href="{{ path('home') }}#footer" class="animate"></a>
+        </p>
     </section>
 
     {#<div class="px_bg5"></div>#}
@@ -73,9 +135,9 @@
                 <div class="footer_item footer_item2">
                     <h2>Suivez nous !</h2>
                     <ul>
-                        <li><a href="#"><img src="assets/img/ico_facebook.png" alt=""></a></li>
-                        <li><a href="#"><img src="assets/img/ico_twitter.png" alt=""></a></li>
-                        <li><a href="#"><img src="assets/img/ico_instagram.png" alt=""></a></li>
+                        <li><a href="#"><img alt="" src="assets/img/ico_facebook.png"></a></li>
+                        <li><a href="#"><img alt="" src="assets/img/ico_twitter.png"></a></li>
+                        <li><a href="#"><img alt="" src="assets/img/ico_instagram.png"></a></li>
                     </ul>
 
                 </div>
@@ -89,10 +151,10 @@
 
                 </div>
             </div>
-            <p class="copyright"> BandTogether 2019 @ All Rights Reserved</p>
+            <p class="copyright">
+                BandTogether 2019 @ All Rights Reserved</p>
         </div>
     </footer>
-
 
 
 {% endblock %}

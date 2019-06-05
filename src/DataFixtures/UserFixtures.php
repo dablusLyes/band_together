@@ -34,11 +34,14 @@ class UserFixtures extends Fixture
           $manager->persist($user_admin);
 
           $names = ['michel', 'tartenpion', 'antoine', 'yoda', 'obiwan', 'frederic', 'faillot', 'macron','jeanphil', 'tartine'];
+          // $departements = ['Var', 'Vaucluse', 'Eure', 'Haute-Normandie', 'Rhone-Alpes', 'Savoie', 'Ain', 'Ardèche', 'Creuse', 'Jura'];
 
           for ($i=0; $i < 20; $i++) {
             $name = $names[rand(0, count($names) - 1)].$i;
+            // $departement = $departements[rand(0, count($departements) - 1)].$i;
             $user = new User();
             $user->setUsername($name);
+            // $user->setDepartement->($departement);
             $user->setEmail("$name@gmail.com");
             $user->setCreatedAt(new \Datetime);
 

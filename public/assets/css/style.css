@@ -88,7 +88,7 @@ header nav ul li a:hover:before {
 /*============================= * PARALLAX HOME PAGE* ===============================*/
 
 .px_bg1 {
-    background: url("../img/homebackground.jpg") no-repeat fixed;
+    background: url("../img/homebackgroundcolor.jpg") no-repeat fixed;
 }
 
 .px_bg2 {
@@ -107,7 +107,12 @@ header nav ul li a:hover:before {
     background: url("../img/footerbg.jpg") no-repeat fixed top;
 }
 
-.px_bg1, .px_bg2, .px_bg3, .px_bg4 {
+.px_bg2, .px_bg3, .px_bg4 {
+    background-size: cover;
+    height: 50vh;
+}
+
+.px_bg1 {
     background-size: cover;
     height: 100vh;
 }
@@ -248,6 +253,7 @@ section.news {
     color: #252525;
 }
 
+/* 
 section.news i {
     font-size: 2em;
     display: block;
@@ -256,6 +262,17 @@ section.news i {
     bottom: 10px;
     left: 50%;
     transform: translate(-50%, -50%);
+} */
+
+section.news p.first {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+section.news h3 {
+    text-align: center;
+    font-size: 2em;
 }
 
 section.news .last_users_container {
@@ -264,8 +281,120 @@ section.news .last_users_container {
 }
 
 section.news .last_users_item {
-    flex-basis: 5%;
-    border: solid 1px black;
+    /* border: solid 1px black; */
+    flex-basis: 22%;
+}
+
+section.news .last_users_item p.username {
+    font-size: 2em;
+    color: #252525;
+    margin-bottom: 5vh;
+}
+
+section.news .last_users_item p.departement {
+    font-size: 1.3em;
+    color: #252525;
+}
+
+section.news a.login {
+    font-size: 2em;
+    border: solid #252525 1px;
+    text-decoration: none;
+    color: #252525;
+    border-radius: 5px;
+    padding: 5px 15px;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+section.news a.login:hover {
+    background-color: #252525;
+    color: #FFCC46;
+}
+
+section.news .last_users_container .img_container img {
+    width: 50%;
+    margin: 0 auto 5vh;
+}
+
+.slideshow {
+    position: relative;
+    height: 60vh;
+    overflow: hidden;
+}
+
+.item1, .item2, .item3 {
+    display: block;
+    color: yellow;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    /* font-size: 2em; */
+    animation-duration: 25s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.item1 {
+    animation-name: anim1;
+}
+
+.item2 {
+    animation-name: anim2;
+}
+
+.item3 {
+    animation-name: anim3;
+}
+
+@keyframes anim1 {
+    0%, 8.3% {
+        left: -100%;
+        opacity: 0;
+    }
+    8.3%, 25% {
+        left: 50%;
+        opacity: 1;
+    }
+    33.33%, 100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes anim2 {
+    0%, 33.33% {
+        left: -100%;
+        opacity: 0;
+    }
+    41.63%, 58.29% {
+        left: 50%;
+        opacity: 1;
+    }
+    66.66%, 100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes anim3 {
+    0%, 66.66% {
+        left: -100%;
+        opacity: 0;
+    }
+    74.96%, 91.62% {
+        left: 50%;
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
 }
 
 /*============= * CONTACT SECTION * ===============*/
@@ -282,15 +411,73 @@ section.contact {
     color: white;
 }
 
-section.contact i {
-    font-size: 2em;
-    display: block;
-    color: #AC3931;
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translate(-50%, -50%);
+section.contact h2{
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 30px;
 }
+
+section.contact p.first{
+    font-size: 1.8em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+section.contact form{
+    padding: 40px;
+    border: solid white 1px;
+    border-radius: 5px;
+}
+
+section.contact form input{
+    color: #252525;
+    display: block;
+    width: 40%;
+    margin: 0 auto 30px;
+    font-size: 1.1em;
+    padding: 7px;
+    text-align: center;
+    border-radius: 5px;
+    border: solid 1px #252525;
+}
+
+section.contact form label{
+    color: white;
+    display: block;
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+section.contact textarea{
+    display: block;
+    width: 90%;
+    margin: 0 auto 50px;
+    font-size: 1.3em;
+    text-align: center;
+    padding: 7px;
+    resize: none;
+    border-radius: 5px;
+    border: solid 1px #252525;
+    height: 15vh;
+}
+
+section.contact input[type=submit]{
+    width: 20%;
+    background-color: #FFCC46;
+    color: #252525;
+    border: 1px solid #252525;
+}
+
+section.contact input[type=submit]:hover{
+    background-color: #252525;
+    color: #FFCC46;
+    /* border: 1px solid #FFCC46; */
+}
+
+
+
+
 
 /* ====================================== */
 
@@ -375,11 +562,23 @@ footer img {
     text-decoration: underline;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 /*============= * LOGIN & REGISTER * ===============*/
 
 section.login, section.register, section.forget_password {
     color: white;
-    background: url("../img/homebackground.jpg") no-repeat fixed;
+    background: url("../img/homebackgroundcolor.jpg") no-repeat fixed;
     background-size: cover;
     height: 100vh;
     padding-top: 20vh;
@@ -454,6 +653,7 @@ section.login input[type=checkbox] {
 
 section.login label.checkbox {
     display: inline;
+
     color: white;
 }
 
