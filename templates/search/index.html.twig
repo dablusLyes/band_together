@@ -6,7 +6,13 @@
 
                 <h1>Rechercher</h1>
                 <p>Ici vous pouvez voir les profils autour de vous ou choisir vos propre critères de recherche. Trouvez ceux qui vous interessent, il ne vous reste plus qu'a les contacter !</p>
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                    {{ form_row(form.instruments, { 'label': 'instrument' } ) }}
+                    {{ form_row(form.departements, { 'label': 'departement' }) }}
 
+                <input type="submit" value="Rechercher">
+
+                {{ form_end(form) }}
             </section>
         </div>
     </div>
