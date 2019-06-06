@@ -6,27 +6,43 @@
 
                 <h1>Rechercher</h1>
                 {% if user.departement == '' %}
-                <p>N'oubliez pas de renseigner votre département dans votre <a href="{{ path('profile') }}">profil</a> pour que cette page soit personnalisée et affiche les membres proches de vous !</p> 
-                <p>En attendant voici les derniers musiciens qui ont rejoint Band Together ! :</p>
-                <p>Vous pouvez aussi utilisez la fonction de recherche pour trouver les membres qui correspondent à vos critères !</p>
+                <p class="first">N'oubliez pas de renseigner votre département dans votre <a href="{{ path('profile') }}">profil</a> pour que cette page soit personnalisée et affiche les membres proches de vous !</p> 
+                <p class="second">En attendant voici les derniers musiciens qui ont rejoint Band Together ! :</p>
+                <p class="third">Vous pouvez aussi utilisez la fonction de recherche pour trouver les membres qui correspondent à vos critères !</p>
                 {% else %}
-                <p>Voici les utilisateurs proches de vous selon le département renseigné dans votre <a href="{{ path('profile') }}">profil</a>. N'hésitez pas à le changer si besoin.</p>
-                <p>Vous pouvez aussi utilisez la fonction de recherche pour trouver les membres qui correspondent à vos critères !</p>
+                <p class="first">Voici les utilisateurs proches de vous selon le département renseigné dans votre <a href="{{ path('profile') }}">profil</a>. N'hésitez pas à le changer si besoin.</p>
+                <p class="second">Vous pouvez aussi utilisez la fonction de recherche pour trouver les membres qui correspondent à vos critères !</p>
                 {% endif %}
 
                 {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-                    {{ form_row(form.instruments, { 'label': 'instrument' } ) }}
-                    {{ form_row(form.departements, { 'label': 'departement' }) }}
-                    <input type="submit" value="Rechercher">
+                    <div class="search_form_container">
+                        <div class="search_form_item">
+                                {{ form_row(form.instruments, { 'label': 'Instrument' } ) }}
+                        </div>
+                        <div class="search_form_item">
+                                {{ form_row(form.departements, { 'label': 'Département' }) }}
+                        </div>
+                        <div class="search_form_item">
+                                <input type="submit" value="Rechercher">
+                        </div>
+                    </div>
+                    
+                    
+                    
                 {{ form_end(form) }}
 
                 <div class="users_container">
                     {% for user in lastUsers %}
-                        <div class="user_item">
-                            <p class="username">{{user.username}}</div></p>
+                        <div class="users_item">
+                            <p class="username">{{user.username}}</p>
                             <div class="img_container">
-                                <img src="{{ asset('assets/img/instruments/016-bass.png') }}" alt="">
+                                {% for instrument in user.instruments %}
+                                    {% if loop.first %}
+                                    <img src="{{ asset('assets/img/instruments/' ~ instrument.nom ~ '.png') }}" alt="{{ instrument.nom }}">
+                                    {% endif %}
+                                {% endfor %}
                             </div>
+                                
                             <p class="departement">
                                 {% if user.departement is not null %}
                                     {{ user.departement.nom }}

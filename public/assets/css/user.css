@@ -5,6 +5,8 @@
 
 @import "reset.css";
 @import url('https://fonts.googleapis.com/css?family=Bungee|Gruppo|McLaren|Roboto+Mono');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline&display=swap');
+
 html {
     scroll-behavior: smooth;
     -webkit-box-sizing: border-box;
@@ -98,21 +100,16 @@ header ul li a:hover, #logout:hover {
 
 section#profil, section#band, section#search {
     min-height: 100vh;
-    padding: 4%;
+    padding: 2% 3%;
     color: white;
     background-color: #777777;
 }
 
 #profil h1, #band h1, #search h1 {
-    font-size: 3em;
+    font-size: 2.8em;
     text-align: center;
-    margin-bottom: 4%;
-    color: white;
-}
-
-#profil h1+p, #search h1+p, #band h1+p {
-    font-size: 1.2em;
-    text-align: center;
+    margin-bottom: 2%;
+    color: #FFCC46;
 }
 
 /* ======================================================================================= */
@@ -143,12 +140,14 @@ section#profil, section#band, section#search {
 #profil form .profile_infos input{
     display: block;
     margin: 0 auto;
-    width: 50%;
+    width: 70%;
     padding: 5px;
     text-align: center;
+    font-size: 1.2em;   
 }
 
-#profil form .profile_infos label{
+#profil form .profile_infos label,
+#profil form .music_infos label{
     display: block;
     font-size: 1.2em;
     margin-bottom: 10px
@@ -171,6 +170,10 @@ section#profil, section#band, section#search {
 #profil form .music_infos_item select{
     display: block;
     margin: 0 auto;
+    width: 70%;
+    padding: 10px;
+    font-size: 1.2em;
+    text-align: center;
 
 }
 
@@ -222,3 +225,106 @@ section#profil, section#band, section#search {
     color: #FFCC46;
     text-align: center;
 }
+
+/* ======================================================================================= */
+/* ===================================== SEARCH PAGE ===================================== */
+/* ======================================================================================= */
+
+section#profil p.first,
+section#profil p.second,
+section#search p.first,
+section#search p.second,
+section#search p.third{
+    text-align: center;
+    font-size: 1.5em;
+}
+
+section#search p.second{
+    margin-bottom: 30px;
+}
+
+section#profil p.first a,
+section#profil p.second a,
+section#search p.first a,
+section#search p.second a{
+    color: #FFCC46;
+    font-size: 1.2em;
+    text-decoration: none;
+}
+section#profil p.first a:hover,
+section#profil p.second a:hover,
+section#search p.first a:hover,
+section#search p.second a:hover{
+    text-decoration: underline;
+}
+
+#search form {
+    padding: 30px 0; 
+    margin-bottom: 100px;   
+}
+
+#search .search_form_container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#search .search_form_item label{
+    margin-right: 15px;
+    font-size: 1.2em;
+    color: #FFCC46;
+    border: 2px solid #252525;
+    padding: 5px;
+}
+
+#search .search_form_item select{
+    text-align: center;
+    font-size: 1.2em;
+    color: #252525;
+}
+
+#search .search_form_item input[type=submit]{
+    width: 150%;
+    background-color: #FFCC46;
+    border:solid 1px #252525;
+    color: #252525;
+    padding: 8px;
+}
+
+#search .search_form_item input[type=submit]:hover{
+    background-color: #252525;
+    color: #FFCC46;
+    border-color: #FFCC46;
+}
+
+
+/* =========================== AFFICHAGE USERS ========================== */
+
+
+#search .users_container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+#search .users_item{
+    flex-basis: 20%;
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+
+#search .users_item .img_container img{
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+#search .users_item p.username{
+    font-family: 'Bungee Inline';
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+#search .users_item p.departement{
+    color: #FFCC46;
+}
+

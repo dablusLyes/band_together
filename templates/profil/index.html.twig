@@ -4,12 +4,10 @@
 
     <section id="profil">
 
-        <h1>
-            Mon Profil</h1>
+        <h1>Mon Profil</h1>
 
-        <p>N'oubliez pas de mettre à jour votre profil ! Ensuite il ne vous reste plus qu'a aller sur la page de
-            <a href="{{ path('search') }}">recherche</a>
-            pour trouver des musiciens près de chez vous !</p>
+        <p class="first">N'oubliez pas de mettre à jour votre profil !</p>
+        <p class="second">Ensuite il ne vous reste plus qu'a aller sur la page de <a href="{{ path('search') }}">recherche</a> pour trouver des musiciens près de chez vous !</p>
 
 
         {{ form_start(profileForm, {'attr': {'novalidate': 'novalidate'}}) }}

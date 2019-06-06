@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UserRepository;
+use App\Repository\UsersInstrumentsRepository;
 
 class SearchController extends AbstractController
 {
@@ -17,7 +18,7 @@ class SearchController extends AbstractController
     /**
      * @Route("/recherche", name="search", methods={"GET","POST"})
      */
-    public function searchController(Request $request, UserRepository $userRepository)
+    public function searchController(Request $request, UserRepository $userRepository )
     {
 
         $search = new Search();

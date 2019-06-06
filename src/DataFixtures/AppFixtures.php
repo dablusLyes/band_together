@@ -88,7 +88,7 @@ class AppFixtures extends Fixture
             'clarinette',
             'contrebasse',
             'djembe',
-            'flute traversiere',
+            'flute',
             'guitare',
             'harpe',
             'harmonica',
