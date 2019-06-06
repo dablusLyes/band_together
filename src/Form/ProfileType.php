@@ -26,13 +26,15 @@ class ProfileType extends AbstractType
                   'choice_label' => 'nom',
                   // used to render a select box, check boxes or radios
                   'multiple' => true,
-                  'expanded' => true,
+                  'expanded' => false,
+                  'placeholder' => '----- Choisissez un instrument -----'
               ])
             ->add('departement', EntityType::class, [
                 'class' => Departements::class,
                 'choice_label' => 'nom',
                 'multiple' => false,
                 'expanded' => false,
+                'placeholder' => '----- Choisissez un département -----'
               ])
             ->add('avatar', FileType::class, [
                 'label' => 'Avatar (png, jpg, gif)',

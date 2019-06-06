@@ -21,7 +21,6 @@
         <p class="scroll-down">
             <a href="{{ path('home') }}#about" class="animate"></a>
         </p>
-        {# <a href="#about"><i class="fas fa-angle-double-down"></i></a> #}
     </section>
 
     <section class="about" id="about">
@@ -128,8 +127,7 @@
                     <h2>Guide</h2>
                     <ul>
                         <li><a href="#">Comment utiliser band together ?</a></li>
-                        <li><a href="#">Besoin d'aide ?</a></li>
-                        <li><a href="#">Castorification 666</a></li>
+                        <li><a href="{{ path('home') }}#contact">Besoin d'aide ?</a></li>
                     </ul>
                 </div>
                 <div class="footer_item footer_item2">
@@ -146,7 +144,7 @@
                     <ul>
                         <li><a href="">Mentions Légales</a></li>
                         <li><a href="">La team Band Together</a></li>
-                        <li><a href="">Contact</a></li>
+                        <li><a href="{{ path('home') }}#contact">Contact</a></li>
                     </ul>
 
                 </div>

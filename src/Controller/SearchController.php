@@ -22,13 +22,19 @@ class SearchController extends AbstractController
     /**
      * @Route("/recherche", name="search", methods={"GET","POST"})
      */
-    public function searchController(Request $request, UserRepository $Repo)
+
+    public function searchController(Request $request, UserRepository $userRepository)
+
     {
 
         $departements = new Departements();
         $instruments = new Instruments();
         $search = new Search();
         $user = $this->getUser();
+
+
+        if (!$user) { throw $this->createNotFoundException('The user does not exist');}
+
 
         $form = $this->createForm(SearchUser::class, $search);
         $form->handleRequest($request);
@@ -51,18 +57,27 @@ class SearchController extends AbstractController
                 dd($search);
             }
 
-
-
-
-
-
-
-
         }
         return $this->render('search/index.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
             'users' => $users,
+        ]);
+
+
+        //  if departement is set in user profil, that queries the users around him, otherwise that queries the last registered users
+        if( $user->getDepartement() != Null){
+            $userDepartement = $user->getDepartement();
+            $lastUsers = $userRepository->findUsersAround($userDepartement);
+        } else {
+            $lastUsers = $userRepository->findLastUsers();
+        }
+        
+        return $this->render('search/index.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+            'lastUsers' => $lastUsers
+
         ]);
     }
 }

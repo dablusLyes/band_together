@@ -288,60 +288,9 @@ class User implements UserInterface
     }
 
 
-
     /**
      * @return Collection|self[]
      */
-    public function getFriends(): Collection
-    {
-        return $this->friends;
-    }
-
-    public function addFriend(self $friend): self
-    {
-        if (!$this->friends->contains($friend)) {
-            $this->friends[] = $friend;
-        }
-
-        return $this;
-    }
-
-    public function removeFriend(self $friend): self
-    {
-        if ($this->friends->contains($friend)) {
-            $this->friends->removeElement($friend);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|self[]
-     */
-    public function getFriendWithMe(): Collection
-    {
-        return $this->friendWithMe;
-    }
-
-    public function addFriendWithMe(self $friendWithMe): self
-    {
-        if (!$this->friendWithMe->contains($friendWithMe)) {
-            $this->friendWithMe[] = $friendWithMe;
-            $friendWithMe->addFriend($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFriendWithMe(self $friendWithMe): self
-    {
-        if ($this->friendWithMe->contains($friendWithMe)) {
-            $this->friendWithMe->removeElement($friendWithMe);
-            $friendWithMe->removeFriend($this);
-        }
-
-        return $this;
-    }
 
     public function getAvatar(): ?string
     {
