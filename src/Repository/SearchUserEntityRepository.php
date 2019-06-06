@@ -19,22 +19,21 @@ class SearchUserEntityRepository extends ServiceEntityRepository
         parent::__construct($registry, Search::class);
     }
 
-    // /**
+    // /**  */
     //  * @return SearchUserEntity[] Returns an array of SearchUserEntity objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findByDepartement($value)
     {
         return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
+            ->andWhere('s.departements = :val')
             ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
+            ->orderBy('s.id', 'DESC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?SearchUserEntity

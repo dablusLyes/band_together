@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 
+
 class Search
 {
 
@@ -15,24 +16,24 @@ class Search
 
 
 
-    public function getDepartements(): ?string
+    public function getDepartements()
     {
         return $this->departements;
     }
 
-    public function setDepartements(?string $departement): self
+    public function setDepartements($departements): self
     {
-        $this->departement = $departement;
+        $this->departements = $departements;
 
         return $this;
     }
 
-    public function getInstruments(): ?string
+    public function getInstruments()
     {
         return $this->instruments;
     }
 
-    public function setInstruments(?string $instruments): self
+    public function setInstruments( $instruments): self
     {
         $this->instruments = $instruments;
 

@@ -55,7 +55,7 @@ class UserRepository extends ServiceEntityRepository
         ;
     }
 
-    public function findUsersAround($departement) 
+    public function findUsersAround($departement)
     {
         return $this->createQueryBuilder('u')
             ->Where('u.departement = :val')
@@ -67,7 +67,7 @@ class UserRepository extends ServiceEntityRepository
         ;
     }
 
-    public function findLastUsers() 
+    public function findLastUsers()
     {
         return $this->createQueryBuilder('u')
             ->orderBy('u.created_at', 'DESC')
@@ -76,7 +76,25 @@ class UserRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    
+
+
+    public function getUserInstruAndDepartement($instru_id,$departement_id)
+    {
+      $query = $this->createQueryBuilder('u');
+      //$query->select('COUNT(a)');
+      $query->leftJoin('u.instruments', 'i');
+      $query->where('i.id = :instru'); /* i have guessed a.name */
+      $query->andWhere('u.departement = :dep'); /* i have guessed a.name */
+      $query->setParameter('instru', $instru_id);
+      $query->setParameter('dep', $departement_id);
+
+
+
+      return $query->getQuery()->getResult();
+      //return $query->getResult();
+
+    }
+
 
     // /**
     //  * @return User[] Returns an array of User objects

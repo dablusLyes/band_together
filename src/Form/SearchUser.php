@@ -21,6 +21,7 @@ class SearchUser extends AbstractType
             ->add('departements', EntityType::class, [
                 'class' => Departements::class,
                 'choice_label' => 'nom',
+                'placeholder' => 'Tous les départements',
                 'multiple' => false,
                 'expanded' => false,
             ])
@@ -30,6 +31,7 @@ class SearchUser extends AbstractType
                 // uses the User.username property as the visible option string
                 'choice_label' => 'nom',
                 // used to render a select box, check boxes or radios
+                'placeholder'=>'Tous les instruments',
                 'multiple' => false,
                 'expanded' => false,
             ]);
@@ -37,7 +39,7 @@ class SearchUser extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Search::class
+            'data_class' => Search::class,
         ]);
     }
 }
