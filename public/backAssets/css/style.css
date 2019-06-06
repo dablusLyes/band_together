@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bungee&display=swap');
+
 .pagination a{
   color: rgba(37, 37, 37, 1);
   padding: 2px;
@@ -5,4 +8,13 @@
 
 .card-header a{
   color: rgb(19, 132, 150);
+}
+
+.logoBack{
+  color: white;
+  font-family: 'Bungee', cursive;
+  font-size: 2em;
+}
+.logoBack .together{
+  color: #ffcc46;
 }
