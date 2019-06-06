@@ -113,9 +113,9 @@ class User implements UserInterface
 
     public function __construct()
     {
-        $this->instruments = new ArrayCollection();
+        $this->instruments  = new ArrayCollection();
         $this->departements = new ArrayCollection();
-        $this->friends = new ArrayCollection();
+        $this->friends      = new ArrayCollection();
         $this->friendWithMe = new ArrayCollection();
 
     }
