@@ -14,33 +14,33 @@
 
         {{ form_start(profileForm, {'attr': {'novalidate': 'novalidate'}}) }}
 
-        <div class="profile_infos">
-            <div class="profile_infos_item">
-                {{ form_row(profileForm.username, { 'label': 'Nom d\'utilisateur' }) }}
-                        </div>
-                        <div class="profile_infos_item">
-                            {{ form_row(profileForm.avatar, { 'label': 'Avatar' }) }}
-                        </div>
-                    </div>
+            <div class="profile_infos">
+                <div class="profile_infos_item">
+                    {{ form_row(profileForm.username, { 'label': 'Nom d\'utilisateur' }) }}
+                </div>
+                <div class="profile_infos_item">
+                    {{ form_row(profileForm.avatar, { 'label': 'Avatar' }) }}
+                </div>
+            </div>
 
-                    <hr>
-                    
-                    <div class="music_infos">
-                            <div class="music_infos_item">
-                                {{ form_row(profileForm.departement, { 'label': 'Département'}) }}
-                            </div>
+            <hr>
                         
-                            <div class="music_infos_item">
-                                {{ form_row(profileForm.instruments, { 'label': 'Instrument', 'label_attr' : { 'id' : 'select_label' } }) }}
-                            </div>
-                    </div>
+            <div class="music_infos">
+                <div class="music_infos_item">
+                    {{ form_row(profileForm.departement, { 'label': 'Département'}) }}
+                </div>
+                            
+                <div class="music_infos_item">
+                    {{ form_row(profileForm.instruments, { 'label': 'Instrument', 'label_attr' : { 'id' : 'select_label' } }) }}
+                </div>
+            </div>
 
-                    <input type="submit" value="Valider">
-                    {% for message in app.flashes('success') %}
-                        <p id="flash_message">{{ message }}</p>
-                    {% endfor %}
+            <input type="submit" value="Valider">
+            {% for message in app.flashes('success') %}
+                <p id="flash_message">{{ message }}</p>
+            {% endfor %}
 
-                {{ form_end(profileForm) }}
+        {{ form_end(profileForm) }}
 
 
             </section>

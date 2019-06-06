@@ -54,6 +54,28 @@ class UserRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function findUsersAround($departement) 
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.departement = :val')
+            ->setParameter('val', $departement)
+            ->orderBy('u.created_at', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findLastUsers() 
+    {
+        return $this->createQueryBuilder('u')
+            ->orderBy('u.created_at', 'DESC')
+            ->setMaxResults(20)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     
 
     // /**
