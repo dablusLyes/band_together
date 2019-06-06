@@ -9,7 +9,8 @@ use App\Entity\Search;
 use App\Form\SearchUser;
 use App\Repository\SearchUserEntityRepository;
 use App\Repository\UserRepository;
-use App\Repository\UsersInstrumentsRepository;
+use App\Repository\InstrumentsRepository;
+use App\Repository\DepartementsRepository;
 use phpDocumentor\Reflection\Types\Null_;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,14 +24,15 @@ class SearchController extends AbstractController
      * @Route("/recherche", name="search", methods={"GET","POST"})
      */
 
-    public function searchController(Request $request, UserRepository $userRepository)
+    public function searchController(Request $request, UserRepository $userRepository, InstrumentsRepository $repoinstru, DepartementsRepository $repodep)
 
     {
 
-        $departements = new Departements();
-        $instruments = new Instruments();
+        // $departements = new Departements();
+        // $instruments = new Instruments();
         $search = new Search();
         $user = $this->getUser();
+        $users = array();
 
 
         if (!$user) { throw $this->createNotFoundException('The user does not exist');}
@@ -39,32 +41,28 @@ class SearchController extends AbstractController
         $form = $this->createForm(SearchUser::class, $search);
         $form->handleRequest($request);
 
-        $dep = $search->getDepartements()->getId();
-        $inst= $search->getInstruments()->getId();
-
         if ($form->isSubmitted() && $form->isValid()) {
+          $dep  = $form['departements']->getData();
+          $inst = $form['instruments']->getData();
 
 
-            if (empty($dep)&&empty($inst)){
-                echo('oui');
-            }elseif(!empty($dep)&&empty($inst)){
+            if (!empty($dep) && !empty($inst)){
 
-                $users =  $departements->getUsers;
-
-            }elseif(empty($dep)&&!empty($inst)){
-
-            }else{
-                dd($search);
+                $searchdepartement = $repodep->find($dep->getId());
+                $searchinstru = $repoinstru->find($inst->getId());
+                $users = $userRepository->getUserInstruAndDepartement($searchinstru,$searchdepartement);
+        
+            } elseif ( !empty($dep) ){
+                $searchdepartement = $repodep->find($dep->getId());
+                $users = $searchdepartement->getUsers();
+            } elseif(!empty($inst)){
+                //$users = $searchinstru->getUsers;
+                $searchinstru = $repoinstru->find($inst->getId());
+                $users = $searchinstru->getUsers();
             }
-
         }
-        return $this->render('search/index.html.twig', [
-            'user' => $user,
-            'form' => $form->createView(),
-            'users' => $users,
-        ]);
 
-
+        // remi
         //  if departement is set in user profil, that queries the users around him, otherwise that queries the last registered users
         if( $user->getDepartement() != Null){
             $userDepartement = $user->getDepartement();
@@ -72,11 +70,12 @@ class SearchController extends AbstractController
         } else {
             $lastUsers = $userRepository->findLastUsers();
         }
-        
+
         return $this->render('search/index.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
-            'lastUsers' => $lastUsers
+            'lastUsers' => $lastUsers,
+            'users' => $users,
 
         ]);
     }
