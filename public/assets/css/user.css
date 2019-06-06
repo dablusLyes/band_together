@@ -310,6 +310,8 @@ section#search p.second a:hover{
     flex-basis: 20%;
     margin-bottom: 100px;
     text-align: center;
+    border-left: solid 1px #FFCC46;
+    border-right: solid 1px #FFCC46;
 }
 
 
