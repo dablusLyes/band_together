@@ -11,17 +11,17 @@
     <section class="login">
         <div class="wrap">
 
-            {% if error %}
-                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
-
             <form method="post">
 
                 <h1>Connexion</h1>
 
+                {% if error %}
+                    <div id="error_message">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
                 <label for="inputEmail">Email</label>
                 <input type="email" value="{{ last_username }}" name="email" id="inputEmail" placeholder="Email" required autofocus>
-
+                
                 <label for="inputPassword">Mot de passe</label>
                 <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
 

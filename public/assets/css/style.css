@@ -541,6 +541,12 @@ footer img:hover{
 
 /*============= * LOGIN & REGISTER * ===============*/
 
+#error_message{
+    text-align: center;
+    color: red;
+    margin-bottom: 20px;
+}
+
 section.login, section.register, section.forget_password {
     color: white;
     background: url("../img/homebackgroundcolor.jpg") no-repeat fixed;
@@ -555,7 +561,7 @@ section.login form, section.register form, section.forget_password form {
 }
 
 section.login h1, section.register h1, section.forget_password h1 {
-    font-family: Bungee;
+    font-family: 'Bungee Inline';
     text-align: center;
     font-size: 3.5vh;
     color: #FFCC46;

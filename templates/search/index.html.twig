@@ -5,55 +5,82 @@
             <section id="search">
 
                 <h1>Rechercher</h1>
-                {% if user.departement == '' %}
-                <p class="first">N'oubliez pas de renseigner votre département dans votre <a href="{{ path('profile') }}">profil</a> pour que cette page soit personnalisée et affiche les membres proches de vous !</p> 
-                <p class="second">En attendant voici les derniers musiciens qui ont rejoint Band Together ! :</p>
-                <p class="third">Vous pouvez aussi utilisez la fonction de recherche pour trouver les membres qui correspondent à vos critères !</p>
-                {% else %}
-                <p class="first">Voici les utilisateurs proches de vous selon le département renseigné dans votre <a href="{{ path('profile') }}">profil</a>. N'hésitez pas à le changer si besoin.</p>
-                <p class="second">Vous pouvez aussi utilisez la fonction de recherche pour trouver les membres qui correspondent à vos critères !</p>
-                {% endif %}
 
-                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-                    <div class="search_form_container">
-                        <div class="search_form_item">
-                                {{ form_row(form.instruments, { 'label': 'Instrument' } ) }}
-                        </div>
-                        <div class="search_form_item">
-                                {{ form_row(form.departements, { 'label': 'Département' }) }}
-                        </div>
-                        <div class="search_form_item">
-                                <input type="submit" value="Rechercher">
-                        </div>
-                    </div>
                     
-                    
-                    
-                {{ form_end(form) }}
+                    {% if user.departement == '' %}
+                    <p class="first">N'oubliez pas de renseigner votre département dans votre <a href="{{ path('profile') }}">profil</a> pour que cette page soit personnalisée et affiche les membres proches de vous !</p> 
+                    <p class="second">En attendant voici les derniers musiciens qui ont rejoint Band Together ! :</p>
+                    <p class="third">Vous pouvez aussi utilisez la fonction de recherche pour trouver les membres qui correspondent à vos critères !</p>
+                    {% else %}
+                    <p class="first">Voici les utilisateurs proches de vous selon le département renseigné dans votre <a href="{{ path('profile') }}">profil</a>. N'hésitez pas à le changer si besoin.</p>
+                    <p class="second">Vous pouvez aussi utilisez la fonction de recherche pour trouver les membres qui correspondent à vos critères !</p>
+                    {% endif %}
 
-                <div class="users_container">
-                    {% for user in lastUsers %}
-                        <div class="users_item">
-                            <p class="username">{{user.username}}</p>
-                            <div class="img_container">
-                                {% for instrument in user.instruments %}
-                                    {% if loop.first %}
-                                    <img src="{{ asset('assets/img/instruments/' ~ instrument.nom ~ '.png') }}" alt="{{ instrument.nom }}">
-                                    {% endif %}
+                    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                        <div class="search_form_container">
+                            <div class="search_form_item">
+                                    {{ form_row(form.instruments, { 'label': 'Instrument' } ) }}
+                            </div>
+                            <div class="search_form_item">
+                                    {{ form_row(form.departements, { 'label': 'Département' }) }}
+                            </div>
+                            <div class="search_form_item">
+                                    <input type="submit" value="Rechercher">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    {{ form_end(form) }}
+
+                    {% if users is not empty %}
+                        <div class="users_container">
+                                {% for user in users %}
+                                    <div class="users_item">
+                                        <p class="username">{{user.username}}</p>
+                                        <div class="img_container">
+                                            {% for instrument in user.instruments %}
+                                                {% if loop.first %}
+                                                <img src="{{ asset('assets/img/instruments/' ~ instrument.nom ~ '.png') }}" alt="{{ instrument.nom }}">
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                            
+                                        <p class="departement">
+                                            {% if user.departement is not null %}
+                                                {{ user.departement.nom }}
+                                            {% else %}
+                                                France
+                                            {% endif %}
+                                    </p>
+                                    </div>
                                 {% endfor %}
                             </div>
-                                
-                            <p class="departement">
-                                {% if user.departement is not null %}
-                                    {{ user.departement.nom }}
-                                {% else %}
-                                    France
-                                {% endif %}
-                           </p>
-                        </div>
-                    {% endfor %}
-                </div>
+                    {% else %}
 
+                    <div class="users_container">
+                        {% for user in lastUsers %}
+                            <div class="users_item">
+                                <p class="username">{{user.username}}</p>
+                                <div class="img_container">
+                                    {% for instrument in user.instruments %}
+                                        {% if loop.first %}
+                                        <img src="{{ asset('assets/img/instruments/' ~ instrument.nom ~ '.png') }}" alt="{{ instrument.nom }}">
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                    
+                                <p class="departement">
+                                    {% if user.departement is not null %}
+                                        {{ user.departement.nom }}
+                                    {% else %}
+                                        France
+                                    {% endif %}
+                            </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </section>
         </div>
     </div>

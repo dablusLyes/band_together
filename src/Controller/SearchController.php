@@ -76,7 +76,6 @@ class SearchController extends AbstractController
             'form' => $form->createView(),
             'lastUsers' => $lastUsers,
             'users' => $users,
-
         ]);
     }
 }
